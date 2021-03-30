@@ -1,0 +1,98 @@
+body {
+    margin: 0px;
+    height: 100%;
+}
+
+html{
+    height: 100%;
+}
+
+/* Header with links to other pages. */
+#header{
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0 10px;
+    
+    li {
+        font: 13px Arial;
+        float: right;
+        line-height: 14px;
+        padding: 23px 5px;
+        
+        a {
+            text-decoration: none;
+            color: rgba(0,0,0,0.87);
+        
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+/* container with Google image */
+
+%align-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#img_container{
+    @extend %align-center;
+    height: calc(100% - 560px);
+    min-height: 92px;
+    max-height: 290px;
+    img{
+        margin-top: auto;
+    }        
+}
+
+/* container with search */
+
+#search_container{
+    height: auto;
+    max-height: 160px;
+    padding: 20px;
+    
+    
+    form{
+        @extend %align-center;
+        padding-top: 6px;
+
+        .gsearch_div{
+            height: 44px;
+            width: 584px;
+            border: 1px solid #DFE1E5;
+            border-radius: 22px;
+            @extend %align-center;
+            
+            &:hover{
+                box-shadow: 1px 2px 5px #DFE1E5;
+            }
+
+            #inner_div{
+                width: 540px;
+                position: relative;
+                height: 100%;
+                margin: auto;
+
+                #magnifier{
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                    margin: auto;
+                    float: left;
+                }
+                #gsearch{
+                    //border: none;
+                    font-family: arial,sans-serif;
+                    font-size: 14px;
+                    color: #222;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+}

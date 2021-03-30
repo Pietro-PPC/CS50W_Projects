@@ -1,0 +1,2 @@
+Alterar tamanho da div interna da caixa de pesquisa para ficar na metade do raio do círculo
+Inserir x no final quando digitar alguma coisa
