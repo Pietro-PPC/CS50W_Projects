@@ -29,7 +29,7 @@ html {
 }
 
 /* container with Google image */
-#search_container form .gsearch_div, #search_container form, #img_container {
+#search_container form, #img_container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,27 +55,30 @@ html {
 }
 #search_container form .gsearch_div {
   height: 44px;
-  width: 584px;
+  width: 582px;
   border: 1px solid #DFE1E5;
-  border-radius: 22px;
+  border-radius: 24px;
 }
 #search_container form .gsearch_div:hover {
   box-shadow: 1px 2px 5px #DFE1E5;
 }
 #search_container form .gsearch_div #inner_div {
-  width: 540px;
   position: relative;
-  height: 100%;
-  margin: auto;
+  width: auto;
+  display: flex;
+  flex: 1;
+  height: 39px;
+  padding: 5px 8px 0 14px;
 }
 #search_container form .gsearch_div #inner_div #magnifier {
-  display: block;
+  display: flex;
+  margin-top: -5px;
+  padding-right: 13px;
   width: 20px;
-  height: 20px;
-  margin: auto;
   float: left;
 }
 #search_container form .gsearch_div #inner_div #gsearch {
+  border: none;
   font-family: arial, sans-serif;
   font-size: 14px;
   color: #222;
