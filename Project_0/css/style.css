@@ -80,9 +80,22 @@ html {
 #search_container form .gsearch_div #inner_div #gsearch {
   border: none;
   font-family: arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   color: #222;
   font-weight: normal;
+  height: 34px;
+  width: auto;
+  padding: 0;
+  margin-top: -1px;
+  display: flex;
+  flex-grow: 1;
+}
+#search_container form .gsearch_div #inner_div #clear {
+  width: 24px;
+  display: flex;
+  margin-top: -5px;
+  padding: 0 8px;
+  float: left;
 }
 
 /*# sourceMappingURL=style.css.map */
