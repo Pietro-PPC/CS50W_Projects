@@ -81,6 +81,10 @@ $gsearchWidth: 582px;
                 flex: 1;
                 height: 39px;
                 padding: 5px 8px 0 14px;
+                
+                path{
+                    fill: #9aa0a6;
+                }
 
                 #magnifier{
                     display: flex;
@@ -103,8 +107,9 @@ $gsearchWidth: 582px;
                     flex-grow: 1;
                 }
                 #clear{
+
                     width: 24px;
-                    display: flex;
+                    display: none/* flex*/;
                     margin-top: -5px;
                     padding: 0 8px;
                     float: left;
