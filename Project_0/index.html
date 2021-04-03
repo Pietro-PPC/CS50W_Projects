@@ -18,9 +18,9 @@
         <div id="img_container">
             <img src="img/googlelogo.png" alt="Google logo">
         </div>
+
         <div id="search_container">
             <form action="https://google.com/search">
-                
                 <div class="gsearch_div">
                     <div id=inner_div>
                         <div id="magnifier">
@@ -29,12 +29,20 @@
                             </svg>
                         </div>
                         <input id="gsearch" type="text" name="q">
+                        <div id="clear">
+                            <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                            </svg>
+                        </div>
                     </div>
                 </div>
-
-                <input type="submit" value="Google Search">
+                <div class="btn_div">
+                    <center>
+                        <input type="submit" value="Google Search" name="btnK">
+                        <input type="submit" value="I'm Feeling Lucky" name="btnI">
+                    </center>
+                </div>
             </form>
         </div>
-
     </body>
 </html>

@@ -5,6 +5,7 @@ body {
 
 html {
   height: 100%;
+  min-width: 400px;
 }
 
 /* Header with links to other pages. */
@@ -29,7 +30,7 @@ html {
 }
 
 /* container with Google image */
-#search_container form .gsearch_div, #search_container form, #img_container {
+#img_container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,34 +53,80 @@ html {
 }
 #search_container form {
   padding-top: 6px;
+  width: auto;
+  max-width: 584px;
+  margin: 0 auto;
 }
 #search_container form .gsearch_div {
   height: 44px;
-  width: 584px;
+  max-width: 582px;
+  width: auto;
+  display: flex;
   border: 1px solid #DFE1E5;
-  border-radius: 22px;
+  border-radius: 24px;
 }
 #search_container form .gsearch_div:hover {
-  box-shadow: 1px 2px 5px #DFE1E5;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+  border-color: rgba(223, 225, 229, 0);
 }
 #search_container form .gsearch_div #inner_div {
-  width: 540px;
   position: relative;
-  height: 100%;
-  margin: auto;
+  width: auto;
+  display: flex;
+  flex: 1;
+  height: 39px;
+  padding: 5px 8px 0 14px;
+}
+#search_container form .gsearch_div #inner_div path {
+  fill: #9aa0a6;
 }
 #search_container form .gsearch_div #inner_div #magnifier {
-  display: block;
+  display: flex;
+  margin-top: -5px;
+  padding-right: 13px;
   width: 20px;
-  height: 20px;
-  margin: auto;
   float: left;
 }
 #search_container form .gsearch_div #inner_div #gsearch {
+  border: none;
   font-family: arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   color: #222;
   font-weight: normal;
+  height: 34px;
+  width: auto;
+  padding: 0;
+  margin-top: -1px;
+  display: flex;
+  flex-grow: 1;
+}
+#search_container form .gsearch_div #inner_div #clear {
+  width: 24px;
+  display: none;
+  margin-top: -5px;
+  padding: 0 8px;
+  float: left;
+}
+#search_container form .btn_div {
+  height: 70px;
+  padding-top: 18px;
+}
+#search_container form .btn_div input {
+  font-size: 14px;
+  height: 36px;
+  padding: 0 16px;
+  margin: 11px 4px;
+  border: 1px solid #f8f9fa;
+  border-radius: 4px;
+  font-family: arial, sans-serif;
+  color: #3c4043;
+  background-color: #f8f9fa;
+}
+#search_container form .btn_div input:hover {
+  border: 1px solid #dadce0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
