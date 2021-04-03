@@ -71,7 +71,9 @@ $gsearchWidth: 582px;
             
             
             &:hover{
-                box-shadow: 1px 2px 5px #DFE1E5;
+                background-color: #fff;
+                box-shadow: 0 1px 6px rgba(32, 33, 36, .28);
+                border-color: rgba(223, 225, 229, 0);
             }
 
             #inner_div{
@@ -120,7 +122,7 @@ $gsearchWidth: 582px;
         .btn_div{
             height: 70px;
             padding-top: 18px;
-            
+
             input{
                 font-size: 14px;
                 height: 36px;
@@ -131,11 +133,11 @@ $gsearchWidth: 582px;
                 font-family: arial, sans-serif;
                 color: #3c4043;
                 background-color: #f8f9fa;            
-            }
-            input:hover{
-                border: 1px solid #dadce0;
-                box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-                cursor: pointer;
+                &:hover{
+                    border: 1px solid #dadce0;
+                    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+                    cursor: pointer;
+                }
             }
         }
     }
