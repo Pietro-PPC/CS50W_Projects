@@ -100,6 +100,10 @@ html {
   padding: 0 8px;
   float: left;
 }
+#search_container form .btn_div {
+  height: 70px;
+  padding-top: 18px;
+}
 #search_container form .btn_div input {
   font-size: 14px;
   height: 36px;
