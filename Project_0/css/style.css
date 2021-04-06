@@ -1,10 +1,6 @@
 body {
   margin: 0px;
   height: 100%;
-}
-
-html {
-  height: 100%;
   min-width: 400px;
 }
 
@@ -100,13 +96,6 @@ html {
   margin-top: -1px;
   display: flex;
   flex-grow: 1;
-}
-#search_container form .gsearch_div #inner_div #clear {
-  width: 24px;
-  display: none;
-  margin-top: -5px;
-  padding: 0 8px;
-  float: left;
 }
 #search_container form .btn_div {
   height: 70px;
