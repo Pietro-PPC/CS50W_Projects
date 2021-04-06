@@ -1,0 +1,27 @@
+body {
+    margin: 0px;
+    height: 100%;
+}
+
+#header{
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0 10px;
+    
+    li {
+        font: 13px Arial;
+        float: right;
+        line-height: 14px;
+        padding: 23px 5px;
+        
+        a {
+            text-decoration: none;
+            color: rgba(0,0,0,0.87);
+        
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
