@@ -25,3 +25,27 @@ body {
         }
     }
 }
+
+%align-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img_container{
+    @extend %align-center;
+    padding-top: 100px;
+    #ISlogo{
+        margin-top: auto;
+        height: 92px;
+        width: 272px;
+        background-image: url(../img/googlelogo.png);
+        span{
+            position: relative;
+            font-family: "roboto-regular", arial, sans-serif;
+            color: #4285f4;
+            top: 76px;
+            left: 215px;
+        }
+    }
+}
