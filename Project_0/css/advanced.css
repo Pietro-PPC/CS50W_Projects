@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: arial, sans-serif;
+}
+
+#header {
+  background: #f1f1f1;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 10px 0 15px;
+  height: 60px;
+}
+#header #img_div {
+  height: 60px;
+  line-height: 60px;
+}
+#header #img_div a {
+  display: inline-block;
+}
+#header #img_div a img {
+  display: inline-block;
+  vertical-align: middle;
+  height: 33px;
+}
+#header span {
+  font: 13px Arial;
+  float: right;
+  line-height: 14px;
+  padding: 23px 5px;
+}
+#header span a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+}
+#header span a:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=advanced.css.map */
