@@ -36,4 +36,15 @@ body {
   text-decoration: underline;
 }
 
+.title {
+  height: 24px;
+  padding: 25px 35px;
+  font-size: 20px;
+  border-bottom: 1px solid #ebebeb;
+}
+.title label {
+  margin-left: 10px;
+  color: #d93025;
+}
+
 /*# sourceMappingURL=advanced.css.map */
