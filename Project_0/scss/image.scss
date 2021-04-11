@@ -1,6 +1,7 @@
 body {
     margin: 0px;
     height: 100%;
+    min-width: 1139px;
 }
 
 /* Header with links to Goofle search page. */
@@ -36,7 +37,10 @@ body {
 
 .img_container{
     @extend %align-center;
-    padding-top: 96px;
+    @media(max-height: 768px){
+        padding-top: 96px;
+    }
+    padding-top: 138px;
     #ISlogo{
         margin-top: auto;
         height: 92px;
