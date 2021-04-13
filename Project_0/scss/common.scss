@@ -8,3 +8,36 @@ body {
     font-family: arial, sans-serif;
     font-size: 16px;
 }
+
+.header{
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0 10px;
+    height: 60px;
+
+    li.right_link{
+        font: 13px Arial;
+        float: right;
+        line-height: 14px;
+        padding: 23px 5px;
+
+        a{
+            text-decoration: none;
+            color: rgba(0,0,0,0.87);
+        
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+
+    li.left_img a{
+        display: inline-block;
+        img{
+            margin-left: 5px;
+            vertical-align: middle;
+            height: 33px;
+        }
+    }
+}
