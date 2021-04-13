@@ -1,37 +1,14 @@
+/* Styling for image page */
+/* Width set to match Google's original page responsiveness */
 body {
-  margin: 0px;
-  height: 100%;
   min-width: 1139px;
 }
 
-/* Header with links to Goofle search page. */
-#header {
-  list-style-type: none;
-  overflow: hidden;
-  margin: 0;
-  padding: 0 10px;
-}
-#header li {
-  font: 13px Arial;
-  float: right;
-  line-height: 14px;
-  padding: 23px 5px;
-}
-#header li a {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.87);
-}
-#header li a:hover {
-  text-decoration: underline;
-}
-
-/* container with Google image */
-.img_container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
+/* 
+ * Container with Google image 
+ * Media query used to match Google's original page responsiveness
+ * .ISlogo stands for Image Search logo
+ */
 .img_container {
   padding-top: 138px;
 }
@@ -55,76 +32,26 @@ body {
   left: 215px;
 }
 
-/* container with input and search button */
-#search_container {
-  height: auto;
-  max-height: 160px;
-  padding: 20px;
-}
-#search_container form {
-  padding-top: 6px;
-  width: auto;
+/* Container with search bar and submit button*/
+.search_container form {
   max-width: 534px;
-  margin: 0 auto;
 }
-#search_container form .search_div {
-  height: 44px;
+.search_container form .search_bar {
   max-width: 536px;
-  width: auto;
-  display: flex;
-  border: 1px solid #DFE1E5;
-  border-radius: 24px;
 }
-#search_container form .search_div:hover {
-  background-color: #fff;
-  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
-  border-color: rgba(223, 225, 229, 0);
-}
-#search_container form .search_div #inner_div {
-  position: relative;
-  display: flex;
-  flex: 1;
-  height: 39px;
-  padding: 5px 8px 0 14px;
-}
-#search_container form .search_div #inner_div path {
-  fill: #9aa0a6;
-}
-#search_container form .search_div #inner_div .camera {
+.search_container form .search_bar .camera {
   padding: 0 8px;
   display: flex;
   align-items: center;
   margin-top: -5px;
 }
-#search_container form .search_div #inner_div .camera span {
+.search_container form .search_bar .camera span {
   background: url(../img/picture_search.png);
   width: 24px;
   height: 24px;
   background-size: 24px;
 }
-#search_container form .search_div #inner_div #gsearch {
-  border: none;
-  font-family: arial, sans-serif;
-  font-size: 16px;
-  color: #222;
-  font-weight: normal;
-  height: 34px;
-  width: auto;
-  padding: 0;
-  margin-top: -1px;
-  display: flex;
-  flex: 100%;
-}
-#search_container form .search_div #inner_div .magnifier {
-  display: flex;
-  margin-top: -5px;
-  padding-right: 13px;
-  float: left;
-}
-#search_container form .search_div #inner_div .magnifier svg {
-  width: 20px;
-}
-#search_container form .search_div button {
+.search_container form .search_bar .submit_btn {
   background-color: transparent;
   display: flex;
   border: none;
@@ -135,11 +62,11 @@ body {
   height: 44px;
   margin: 0px;
 }
-#search_container form .search_div button svg {
+.search_container form .search_bar .submit_btn svg {
   width: 24px;
   margin: auto;
 }
-#search_container form .search_div button svg path {
+.search_container form .search_bar .submit_btn svg path {
   fill: #4285f4;
 }
 

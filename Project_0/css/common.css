@@ -1,0 +1,117 @@
+/* Default settings for all pages*/
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  height: 100%;
+  font-family: arial, sans-serif;
+  font-size: 16px;
+}
+
+/*
+ * Common header settings for all pages.
+ * All headers have a height of 60px and the same styling for the
+ * hyperlinks to the other pages floating at the right side.
+ */
+.header {
+  list-style-type: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 10px;
+  height: 60px;
+}
+.header li.right_link {
+  font: 13px Arial;
+  float: right;
+  line-height: 14px;
+  padding: 23px 5px;
+}
+.header li.right_link a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+}
+.header li.right_link a:hover {
+  text-decoration: underline;
+}
+.header li.left_img a {
+  display: inline-block;
+}
+.header li.left_img a img {
+  margin-left: 5px;
+  vertical-align: middle;
+  height: 33px;
+}
+
+/*
+ * Used to align the google image to the center of the div
+ */
+.align_center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*
+ * Container with search bar and submit button(s)
+ */
+.search_container {
+  height: auto;
+  max-height: 160px;
+  padding: 20px;
+}
+.search_container form {
+  padding-top: 6px;
+  width: auto;
+  margin: 0 auto;
+}
+.search_container form .search_bar {
+  height: 44px;
+  width: auto;
+  display: flex;
+  border: 1px solid #DFE1E5;
+  border-radius: 24px;
+  /*
+   * Div inside the search bar used to space the inner elements
+   * from the border
+   */
+}
+.search_container form .search_bar:hover {
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+  border-color: rgba(223, 225, 229, 0);
+}
+.search_container form .search_bar .inner_div {
+  position: relative;
+  width: auto;
+  display: flex;
+  flex: 1;
+  height: 39px;
+  padding: 5px 8px 0 14px;
+}
+.search_container form .search_bar .inner_div path {
+  fill: #9aa0a6;
+}
+.search_container form .search_bar .inner_div .magnifier {
+  display: flex;
+  margin-top: -5px;
+  padding-right: 13px;
+  width: 20px;
+  float: left;
+}
+.search_container form .search_bar .inner_div .input_box {
+  border: none;
+  font-family: arial, sans-serif;
+  font-size: 16px;
+  color: #222;
+  font-weight: normal;
+  height: 34px;
+  width: auto;
+  padding: 0;
+  margin-top: -1px;
+  display: flex;
+  flex-grow: 1;
+}
+
+/*# sourceMappingURL=common.css.map */
