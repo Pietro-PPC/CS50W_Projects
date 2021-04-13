@@ -1,4 +1,6 @@
 /* Styling for image page */
+
+/* Width set to match Google's original page responsiveness */
 body {
     min-width: 1139px;
 }
@@ -6,7 +8,7 @@ body {
 /* 
  * Container with Google image 
  * Media query used to match Google's original page responsiveness
- * ISlogo stands for Image Search logo
+ * .ISlogo stands for Image Search logo
  */
 .img_container{
     @media(max-height: 768px){

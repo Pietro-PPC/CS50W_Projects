@@ -1,4 +1,7 @@
 /* Styling for main page */
+/* 
+ * Width set this way to match responsiveness of Google's original search page.
+ */
 body {
   min-width: 400px;
 }
