@@ -28,76 +28,27 @@ body {
 }
 
 /* container with input and search button */
-#search_container{
-    height: auto;
-    max-height: 160px;
-    padding: 20px;
+.search_container{
     
     form{
-        padding-top: 6px;
-        width: auto;
         max-width: 534px;
-        margin: 0 auto;
 
-        .search_div{
-            height: 44px;
+        .search_bar{
             max-width: 536px;
-            width: auto;
-            display: flex;
-            border: 1px solid #DFE1E5;
-            border-radius: 24px;
-            
-            &:hover{
-                background-color: #fff;
-                box-shadow: 0 1px 6px rgba(32, 33, 36, .28);
-                border-color: rgba(223, 225, 229, 0);
+
+            .camera{
+                padding: 0 8px;
+                display: flex;
+                align-items: center;
+                margin-top: -5px;
+                span{
+                    background: url(../img/picture_search.png);
+                    width: 24px;
+                    height: 24px;
+                    background-size: 24px;
+                }
             }
 
-            #inner_div{
-                position: relative;
-                display: flex;
-                flex: 1;
-                height: 39px;
-                padding: 5px 8px 0 14px;
-                
-                path{
-                    fill: #9aa0a6;
-                }
-                .camera{
-                    padding: 0 8px;
-                    display: flex;
-                    align-items: center;
-                    margin-top: -5px;
-                    span{
-                        background: url(../img/picture_search.png);
-                        width: 24px;
-                        height: 24px;
-                        background-size: 24px;
-                    }
-                }
-                #gsearch{
-                    border: none;
-                    font-family: arial,sans-serif;
-                    font-size: 16px;
-                    color: #222;
-                    font-weight: normal;
-                    height: 34px;
-                    width: auto;
-                    padding: 0;
-                    margin-top: -1px;
-                    display: flex;
-                    flex: 100%;
-                }
-                .magnifier{
-                    display: flex;
-                    margin-top: -5px;
-                    padding-right: 13px;
-                    float: left;
-                    svg{
-                        width: 20px;
-                    }
-                }
-            }
             button{
                 background-color: transparent;
                 display: flex;
@@ -116,7 +67,6 @@ body {
                     }
                 }
             }
-
         }
     }
 }
