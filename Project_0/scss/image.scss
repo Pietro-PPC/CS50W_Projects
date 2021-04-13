@@ -5,14 +5,8 @@ body {
 /* Header with links to Goofle search page. */
 
 /* container with Google image */
-%align-center{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 .img_container{
-    @extend %align-center;
     @media(max-height: 768px){
         padding-top: 96px;
     }

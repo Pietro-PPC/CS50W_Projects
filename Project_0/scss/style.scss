@@ -4,14 +4,8 @@ body {
 
 /* container with Google image */
 
-%align-center{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-#img_container{
-    @extend %align-center;
+.img_container{
     height: calc(100% - 560px);
     min-height: 92px;
     max-height: 290px;
