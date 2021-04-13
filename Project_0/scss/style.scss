@@ -1,10 +1,15 @@
+/* Styling for main page */
+
+// Width set this way to match responsiveness of Google's original search page.
 body {
     min-width: 400px;
 }
 
-/* container with Google image */
-
-
+/* 
+ * Container with Google image.
+ * Container was set this way to match responsiveness of Google's 
+ * original search page.
+ */
 .img_container{
     height: calc(100% - 560px);
     min-height: 92px;
@@ -14,8 +19,9 @@ body {
     }        
 }
 
-/* container with search */
-
+/*
+ * Container with search bar and submit buttons
+ */
 .search_container{
     form{
         max-width: 584px;
@@ -28,7 +34,7 @@ body {
             height: 70px;
             padding-top: 18px;
 
-            input{
+            .submit_btn{
                 font-size: 14px;
                 height: 36px;
                 padding: 0 16px;

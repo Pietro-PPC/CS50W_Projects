@@ -1,9 +1,13 @@
+/* Styling for image page */
 body {
   min-width: 1139px;
 }
 
-/* Header with links to Goofle search page. */
-/* container with Google image */
+/* 
+ * Container with Google image 
+ * Media query used to match Google's original page responsiveness
+ * ISlogo stands for Image Search logo
+ */
 .img_container {
   padding-top: 138px;
 }
@@ -27,7 +31,7 @@ body {
   left: 215px;
 }
 
-/* container with input and search button */
+/* Container with search bar and submit button*/
 .search_container form {
   max-width: 534px;
 }
@@ -46,7 +50,7 @@ body {
   height: 24px;
   background-size: 24px;
 }
-.search_container form .search_bar button {
+.search_container form .search_bar .submit_btn {
   background-color: transparent;
   display: flex;
   border: none;
@@ -57,11 +61,11 @@ body {
   height: 44px;
   margin: 0px;
 }
-.search_container form .search_bar button svg {
+.search_container form .search_bar .submit_btn svg {
   width: 24px;
   margin: auto;
 }
-.search_container form .search_bar button svg path {
+.search_container form .search_bar .submit_btn svg path {
   fill: #4285f4;
 }
 

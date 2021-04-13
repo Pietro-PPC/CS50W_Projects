@@ -1,8 +1,13 @@
+/* Styling for main page */
 body {
   min-width: 400px;
 }
 
-/* container with Google image */
+/* 
+ * Container with Google image.
+ * Container was set this way to match responsiveness of Google's 
+ * original search page.
+ */
 .img_container {
   height: calc(100% - 560px);
   min-height: 92px;
@@ -12,7 +17,9 @@ body {
   margin-top: auto;
 }
 
-/* container with search */
+/*
+ * Container with search bar and submit buttons
+ */
 .search_container form {
   max-width: 584px;
 }
@@ -23,7 +30,7 @@ body {
   height: 70px;
   padding-top: 18px;
 }
-.search_container form .btn_div input {
+.search_container form .btn_div .submit_btn {
   font-size: 14px;
   height: 36px;
   padding: 0 16px;
@@ -34,7 +41,7 @@ body {
   color: #3c4043;
   background-color: #f8f9fa;
 }
-.search_container form .btn_div input:hover {
+.search_container form .btn_div .submit_btn:hover {
   border: 1px solid #dadce0;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   cursor: pointer;
