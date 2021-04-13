@@ -32,12 +32,14 @@ body {
         }
     }
 
-    li.left_img a{
-        display: inline-block;
-        img{
-            margin-left: 5px;
-            vertical-align: middle;
-            height: 33px;
+    li.left_img {
+        a{
+            display: inline-block;
+            img{
+                margin-left: 5px;
+                vertical-align: middle;
+                height: 33px;
+            }
         }
     }
 }
