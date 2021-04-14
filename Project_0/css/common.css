@@ -10,6 +10,11 @@ body {
   font-size: 16px;
 }
 
+/* Remove default navigator outline */
+input {
+  outline: none;
+}
+
 /*
  * Common header settings for all pages.
  * All headers have a height of 60px and the same styling for the
@@ -65,6 +70,7 @@ body {
   padding-top: 6px;
   width: auto;
   margin: 0 auto;
+  /* Centered with rounded corners search bar */
 }
 .search_container form .search_bar {
   height: 44px;
