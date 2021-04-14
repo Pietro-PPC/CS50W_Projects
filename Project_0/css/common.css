@@ -65,6 +65,7 @@ body {
   padding-top: 6px;
   width: auto;
   margin: 0 auto;
+  /* Centered with rounded corners search bar */
 }
 .search_container form .search_bar {
   height: 44px;
