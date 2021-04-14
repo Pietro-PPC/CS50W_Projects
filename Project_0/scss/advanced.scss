@@ -4,6 +4,7 @@
 .header{
     background: #f1f1f1;
     line-height: 60px;
+    min-width: 1002px;
 }
 
 /* Div with "Advanced Search" title */
@@ -29,11 +30,14 @@
     max-width: 1140px;
     min-width: 200px;
     width: 96%;
+    overflow: hidden;
     
     form{
         div{
-            float: left;
-            height: 42px;
+            &.thead, &.tbody{
+                float: left;
+                min-height: 42px;
+            }
         }
         
         label{
@@ -42,8 +46,17 @@
             vertical-align: middle;
         }
 
+        .table_head{
+            height: 42px;
+        }
+        .table_row{
+            width: 100%;
+            clear: both;
+        }
+
         .col1{
             width: 16%;
+            min-width: 167px;
             &.thead {
                 color: #333;
             }
@@ -55,8 +68,8 @@
         }
 
         .col2{
-            min-height: 1px;
             width: 50%;
+            min-width: 167px;
 
             .txt_input{
                 border-radius: 1px;
@@ -74,7 +87,12 @@
             }
         }
         .col3{
+            @media(max-width: 1056px){
+                display: none;
+            }
+
             width: 32%;
+            min-width: 160px;
             &.thead {
                 font-size: 13px;
                 font-weight: 700;

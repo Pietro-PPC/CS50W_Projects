@@ -29,59 +29,74 @@
         
         <div class="form_div">
             <form action="https://google.com/search">
-                <div class="col1 thead">
-                    <label>Find pages with...</label>
+                <div class="table_head">
+                    <div class="col1 thead">
+                        <label>Find pages with...</label>
+                    </div>
+                    <div class="col2 thead"></div>
+                    <div class="col3 thead">
+                        <label>To do this in the search box.</label>
+                    </div>
                 </div>
-                <div class="col2"></div>
-                <div class="col3 thead">
-                    <label>To do this in the search box.</label>
-                </div>
+                <div class="table_body">
 
-                <div class="col1 tbody">
-                    <label>all these words:</label>
-                </div>
-                <div class="col2 tbody">
-                    <input class="txt_input" type="text" name="as_q">
-                </div>
-                <div class="col3 tbody">
-                    <label>Type the important words: <span>tri-colour rat terrier</span></label>
-                </div>
+                    <div class="table_row">
+                        <div class="col1 tbody">
+                            <label>all these words:</label>
+                        </div>
+                        <div class="col2 tbody">
+                            <input class="txt_input" type="text" name="as_q">
+                        </div>
+                        <div class="col3 tbody">
+                            <label>Type the important words: <span>tri-colour rat terrier</span></label>
+                        </div>
+                    </div>
+    
+                    <div class="table_row">
+                        <div class="col1 tbody">
+                            <label>this exact word or phrase:</label>
+                        </div>
+                        <div class="col2 tbody">
+                            <input class="txt_input" type="text" name="as_epq">
+                        </div>
+                        <div class="col3 tbody">
+                            <label>Put exact words in quotes: <span>"rat terrier"</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="table_row">
+                        <div class="col1 tbody">
+                            <label>any of these words:</label>
+                        </div>
+                        <div class="col2 tbody">
+                            <input class="txt_input" type="text" name="as_oq">
+                        </div>
+                        <div class="col3 tbody">
+                            <label>Type <span>OR</span> between all the words you want: <span>miniature OR standard</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="table_row">
+                        <div class="col1 tbody">
+                            <label>none of these words:</label>
+                        </div>
+                        <div class="col2 tbody">
+                            <input class="txt_input" type="text" name="as_eq">
+                        </div>
+                        <div class="col3 tbody">
+                            <label>
+                                Put a minus sign just before words that you don't want: <br> 
+                                <span>-rodent, -"Jack Russell"</span>
+                            </label>
+                        </div>
+                    </div>
 
-                <div class="col1 tbody">
-                    <label>this exact word or phrase:</label>
-                </div>
-                <div class="col2 tbody">
-                    <input class="txt_input" type="text" name="as_epq">
-                </div>
-                <div class="col3 tbody">
-                    <label>Put exact words in quotes: <span>"rat terrier"</span></label>
-                </div>
-                
-                <div class="col1 tbody">
-                    <label>any of these words:</label>
-                </div>
-                <div class="col2 tbody">
-                    <input class="txt_input" type="text" name="as_oq">
-                </div>
-                <div class="col3 tbody">
-                    <label>Type <span>OR</span> between all the words you want: <span>miniature OR standard</span></label>
-                </div>
-                
-                <div class="col1 tbody">
-                    <label>none of these words:</label>
-                </div>
-                <div class="col2 tbody">
-                    <input class="txt_input" type="text" name="as_eq">
-                </div>
-                <div class="col3 tbody">
-                    <label>
-                        Put a minus sign just before words that you don't want: <br> 
-                        <span>-rodent, -"Jack Russell"</span>
-                    </label>
-                </div>
-                <div class="col1"></div>
-                <div class="col2">
-                    <input id="submit_btn" type="submit" value="Advanced Search">
+                        <div class="table_row">
+                        <div class="col1 tbody"></div>
+                        <div class="col2 tbody">
+                            <input id="submit_btn" type="submit" value="Advanced Search">
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>

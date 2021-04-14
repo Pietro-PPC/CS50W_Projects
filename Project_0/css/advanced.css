@@ -3,6 +3,7 @@
 .header {
   background: #f1f1f1;
   line-height: 60px;
+  min-width: 1002px;
 }
 
 /* Div with "Advanced Search" title */
@@ -28,18 +29,27 @@
   max-width: 1140px;
   min-width: 200px;
   width: 96%;
+  overflow: hidden;
 }
-.form_div form div {
+.form_div form div.thead, .form_div form div.tbody {
   float: left;
-  height: 42px;
+  min-height: 42px;
 }
 .form_div form label {
   height: 30px;
   display: table-cell;
   vertical-align: middle;
 }
+.form_div form .table_head {
+  height: 42px;
+}
+.form_div form .table_row {
+  width: 100%;
+  clear: both;
+}
 .form_div form .col1 {
   width: 16%;
+  min-width: 167px;
 }
 .form_div form .col1.thead {
   color: #333;
@@ -49,8 +59,8 @@
   font-size: 13px;
 }
 .form_div form .col2 {
-  min-height: 1px;
   width: 50%;
+  min-width: 167px;
 }
 .form_div form .col2 .txt_input {
   border-radius: 1px;
@@ -68,6 +78,12 @@
 }
 .form_div form .col3 {
   width: 32%;
+  min-width: 160px;
+}
+@media (max-width: 1056px) {
+  .form_div form .col3 {
+    display: none;
+  }
 }
 .form_div form .col3.thead {
   font-size: 13px;
