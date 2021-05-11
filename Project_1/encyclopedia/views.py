@@ -1,3 +1,5 @@
+from markdown2 import markdown
+
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -10,8 +12,12 @@ def index(request):
     })
 
 def wikiPage(request, page):
-    entry = util.get_entry(page)
-    if entry == None:
+    content = util.get_entry(page)
+    if content == None:
         return HttpResponse(f"Page not found!")
     else:
-        return HttpResponse(f"{entry}")
+        content = markdown(content)
+        return render(request, "encyclopedia/page.html", {
+            "page": page,
+            "content": content
+        })
