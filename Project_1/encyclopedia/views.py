@@ -9,6 +9,7 @@ from . import util
 class searchPageForm(forms.Form):
     page = forms.CharField(label="page")
 
+
 def wikiPage(request, page):
     content = util.get_entry(page)
     if content == None:
@@ -21,15 +22,36 @@ def wikiPage(request, page):
             "content": content
         })
 
+
+def getSimilarEntries(query_page):
+    """
+        Returns pages which have query_page as a substring
+    """
+    similar_entries = []
+    pages = util.list_entries()
+
+    for p in pages:
+        if query_page in p:
+            similar_entries.append(p)
+
+    return similar_entries
+
 def searchPage(request):
     if request.method == 'POST':
         form = searchPageForm(request.POST)
-        
         if form.is_valid():
+
             query_page = form.cleaned_data["page"]
             page = util.get_entry(query_page)
             if page != None:
                 return HttpResponseRedirect(reverse("encyclopedia:wikipage", args=[query_page]))
+            else:
+                return render(request, "encyclopedia/searchPage.html", {
+                    "form": searchPageForm(),
+                    "query": query_page,
+                    "results": getSimilarEntries(query_page)
+                })
+
 
     return HttpResponseRedirect(reverse("encyclopedia:index"))
 
