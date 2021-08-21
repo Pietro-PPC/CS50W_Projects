@@ -9,14 +9,20 @@ from . import util
 class searchPageForm(forms.Form):
     page = forms.CharField(label="page")
 
-class newPageForm(forms.Form):
+class PageForm(forms.Form):
     name = forms.CharField(label="name")
     body = forms.CharField(label="body", widget=forms.Textarea)
+
+class EditPageForm(forms.Form):
+    body = forms.CharField(label="", widget=forms.Textarea)
+
+def notFound(request):
+    return HttpResponse("Page not found!")
 
 def wikiPage(request, page):
     content = util.get_entry(page)
     if content == None:
-        return HttpResponse(f"Page not found!")
+        return HttpResponseRedirect(reverse('encyclopedia:notfound'))
     else:
         content = markdown(content)
         return render(request, "encyclopedia/page.html", {
@@ -54,14 +60,30 @@ def searchPage(request):
                     "query": query_page,
                     "results": getSimilarEntries(query_page)
                 })
-
-
     return HttpResponseRedirect(reverse("encyclopedia:index"))
+
+def editPage(request, page):
+
+    if request.method == "POST":
+        form = EditPageForm(request.POST)
+        if form.is_valid():
+            util.save_entry(page, form.cleaned_data["body"])
+            return HttpResponseRedirect(reverse("encyclopedia:wikipage", args=[page]))
+
+    body = util.get_entry(page)
+    if body != None:
+        return render (request, "encyclopedia/editPage.html", {
+            "form": searchPageForm(),
+            "page": page,
+            "editpageform": EditPageForm(initial={"body": body})
+        })
+    else:
+        return HttpResponseRedirect('notfound')
 
 def newPage(request):
     error = False
     if request.method == 'POST':
-        form = newPageForm(request.POST)
+        form = PageForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data["name"]
             body = form.cleaned_data["body"]
@@ -74,7 +96,7 @@ def newPage(request):
     
     return render(request, "encyclopedia/createPage.html", {
         "form": searchPageForm(),
-        "newpageform": newPageForm(),
+        "newpageform": PageForm(),
         "error": error
     })
 

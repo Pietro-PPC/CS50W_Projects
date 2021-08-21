@@ -9,7 +9,7 @@
     <form action="{% url 'encyclopedia:newpage' %}" method="POST">
         {% csrf_token %}
         {{ newpageform }}
-        <input type="submit">
+        <input type="submit" value="Submit">
     </form>
     
     {% if error %}
