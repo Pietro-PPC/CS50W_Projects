@@ -6,6 +6,8 @@ from django.http import HttpResponse
 from django import forms
 from . import util
 
+import random
+
 class searchPageForm(forms.Form):
     page = forms.CharField(label="page")
 
@@ -99,6 +101,12 @@ def newPage(request):
         "newpageform": PageForm(),
         "error": error
     })
+
+def randomPage(request):
+    pages = util.list_entries()
+    random.seed()
+    page = pages[random.randrange(len(pages))]
+    return HttpResponseRedirect(reverse("encyclopedia:wikipage", args=[page]))
 
 def index(request):
     return render(request, "encyclopedia/index.html", {

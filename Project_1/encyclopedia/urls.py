@@ -9,5 +9,6 @@ urlpatterns = [
     path("wiki/<str:page>", views.wikiPage, name="wikipage"),
     path("search", views.searchPage, name="searchpage"),
     path("newpage", views.newPage, name="newpage"),
-    path("edit/<str:page>", views.editPage, name="edit")
+    path("edit/<str:page>", views.editPage, name="edit"),
+    path("randompage", views.randomPage, name="randompage")
 ]
