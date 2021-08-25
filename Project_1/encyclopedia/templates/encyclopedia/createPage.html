@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block body %}
+    <h1>Create a new page</h1>
 
+    {% if error %}
+    <p class="error"> There already exists a page with this name! </p>
+    {% endif %}
     <form action="{% url 'encyclopedia:newpage' %}" method="POST">
         {% csrf_token %}
         {{ newpageform }}
         <input type="submit" value="Submit">
     </form>
-    
-    {% if error %}
-        <p> There already exists a page with this name! </p>
-    {% endif %}
 {% endblock %}

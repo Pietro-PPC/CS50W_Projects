@@ -8,18 +8,21 @@ from . import util
 
 import random
 
-class searchPageForm(forms.Form):
-    page = forms.CharField(label="page")
+class SearchPageForm(forms.Form):
+    page = forms.CharField(label="Search page",
+        widget=forms.TextInput(attrs={'placeholder':'Page title here...'}))
 
 class PageForm(forms.Form):
-    name = forms.CharField(label="name")
-    body = forms.CharField(label="body", widget=forms.Textarea)
+    title = forms.CharField(label="Title")
+    content = forms.CharField(label="Content", widget=forms.Textarea)
 
 class EditPageForm(forms.Form):
-    body = forms.CharField(label="", widget=forms.Textarea)
+    content = forms.CharField(label="Content", widget=forms.Textarea)
 
 def notFound(request):
-    return HttpResponse("Page not found!")
+    return render(request, "encyclopedia/notFoundPage.html", {
+        "form": SearchPageForm()
+    })
 
 def wikiPage(request, page):
     content = util.get_entry(page)
@@ -28,7 +31,7 @@ def wikiPage(request, page):
     else:
         content = markdown(content)
         return render(request, "encyclopedia/page.html", {
-            "form": searchPageForm(),
+            "form": SearchPageForm(),
             "page": page,
             "content": content
         })
@@ -49,7 +52,7 @@ def getSimilarEntries(query_page):
 
 def searchPage(request):
     if request.method == 'POST':
-        form = searchPageForm(request.POST)
+        form = SearchPageForm(request.POST)
         if form.is_valid():
 
             query_page = form.cleaned_data["page"]
@@ -58,7 +61,7 @@ def searchPage(request):
                 return HttpResponseRedirect(reverse("encyclopedia:wikipage", args=[query_page]))
             else:
                 return render(request, "encyclopedia/searchPage.html", {
-                    "form": searchPageForm(),
+                    "form": SearchPageForm(),
                     "query": query_page,
                     "results": getSimilarEntries(query_page)
                 })
@@ -69,36 +72,39 @@ def editPage(request, page):
     if request.method == "POST":
         form = EditPageForm(request.POST)
         if form.is_valid():
-            util.save_entry(page, form.cleaned_data["body"])
+            util.save_entry(page, form.cleaned_data["content"])
             return HttpResponseRedirect(reverse("encyclopedia:wikipage", args=[page]))
 
-    body = util.get_entry(page)
-    if body != None:
+    content = util.get_entry(page)
+    if content != None:
         return render (request, "encyclopedia/editPage.html", {
-            "form": searchPageForm(),
+            "form": SearchPageForm(),
             "page": page,
-            "editpageform": EditPageForm(initial={"body": body})
+            "editpageform": EditPageForm(initial={"content": content})
         })
     else:
         return HttpResponseRedirect('notfound')
 
 def newPage(request):
     error = False
+    entryForm = PageForm()
+
     if request.method == 'POST':
         form = PageForm(request.POST)
         if form.is_valid():
-            name = form.cleaned_data["name"]
-            body = form.cleaned_data["body"]
+            title = form.cleaned_data["title"]
+            content = form.cleaned_data["content"]
 
-            if util.get_entry(name) == None:
-                util.save_entry(name, body)
-                return HttpResponseRedirect(reverse("encyclopedia:wikipage", args=[name]))
+            if util.get_entry(title) == None:
+                util.save_entry(title, content)
+                return HttpResponseRedirect(reverse("encyclopedia:wikipage", args=[title]))
             else:
                 error = True
+                entryForm = PageForm(initial={"title": title, "content": content})
     
     return render(request, "encyclopedia/createPage.html", {
-        "form": searchPageForm(),
-        "newpageform": PageForm(),
+        "form": SearchPageForm(),
+        "newpageform": entryForm,
         "error": error
     })
 
@@ -110,6 +116,6 @@ def randomPage(request):
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
-        "form": searchPageForm(),
+        "form": SearchPageForm(),
         "entries": util.list_entries()
     })

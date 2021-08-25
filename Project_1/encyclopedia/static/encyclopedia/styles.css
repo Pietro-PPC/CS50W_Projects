@@ -12,9 +12,15 @@ h1 {
     padding-top: 20px;
 }
 
+
 textarea {
-    height: 90vh;
+    height: 50vh;
     width: 80%;
+}
+
+input[type=text], textarea{
+    display: block;
+    margin-bottom: .5rem;
 }
 
 .main {
@@ -35,4 +41,11 @@ textarea {
 
 .sidebar h2 {
     margin-top: 5px;
+}
+.sidebar form{
+    margin: 10px 0px 20px 0px;
+}
+
+.error{
+    color: red
 }
