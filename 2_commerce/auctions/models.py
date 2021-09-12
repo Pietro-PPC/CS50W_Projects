@@ -10,6 +10,9 @@ class Listing(models.Model):
     description = models.TextField()
     starting_bid = models.FloatField()
     image_url = models.URLField(null=True)
+    category = models.CharField(null=True, max_length=64)
+    def __str__(self):
+        return f"{self.title} (R$ {self.starting_bid})"
 
 class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="wishlist")
