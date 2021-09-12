@@ -9,10 +9,8 @@ from . import page_forms
 
 
 def index(request):
-    for l in Listing.objects.all():
-        print(l)
     return render(request, "auctions/index.html", {
-        "listings": Listing
+        "listings": Listing.objects.all()
     })
 
 
@@ -68,10 +66,12 @@ def register(request):
         return render(request, "auctions/register.html")
 
 def new_listing(request):
+    print(request.user)
     if request.method == 'POST':
         form = page_forms.NewListingForm(request.POST)
         if form.is_valid():
             l = Listing(
+                creator=request.user,
                 title=form.cleaned_data["title"],
                 description=form.cleaned_data["description"],
                 starting_bid=form.cleaned_data["starting_bid"],

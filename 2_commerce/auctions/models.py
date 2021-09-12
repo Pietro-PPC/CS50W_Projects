@@ -6,6 +6,7 @@ class User(AbstractUser):
     pass
 
 class Listing(models.Model):
+    creator = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=64)
     description = models.TextField()
     starting_bid = models.FloatField()
