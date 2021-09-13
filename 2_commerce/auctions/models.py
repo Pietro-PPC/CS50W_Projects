@@ -15,6 +15,7 @@ class Listing(models.Model):
     def __str__(self):
         return f"{self.title} (R$ {self.starting_bid})"
 
+# Many to many relationship
 class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="wishlist")
     listing = models.ForeignKey(Listing, on_delete=models.CASCADE)

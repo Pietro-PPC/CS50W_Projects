@@ -84,3 +84,13 @@ def new_listing(request):
     return render(request, "auctions/new_listing.html", {
         "form": page_forms.NewListingForm()
     })
+
+def listing_page(request, id):
+    try:
+        listing = Listing.objects.get(pk=id)
+    except Listing.DoesNotExist:
+        return HttpResponse("This listing does not exist!")
+    print(listing)
+    return render(request, "auctions/listing_page.html", {
+        'listing': listing
+    })
