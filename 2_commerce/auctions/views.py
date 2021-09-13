@@ -103,4 +103,4 @@ def toggle_watchlist(request, listing_id):
         user.watchlist.add(listing)
     else:
         user.watchlist.remove(listing)
-    return HttpResponseRedirect(reverse("listing", args=[user.id]))
+    return HttpResponseRedirect(reverse("listing", args=[listing_id]))
