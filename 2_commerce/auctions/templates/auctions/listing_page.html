@@ -7,4 +7,13 @@
     <p>Image URL: {{ listing.image_url }}</p>
     <p>Creator: {{ listing.creator }}</p>
     <p>Category: {{ listing.category }}</p>
+    {% if user.is_authenticated %}
+        {% if listing in watchlist %}
+            <p><a href="{% url 'toggle_watchlist' listing.id %}">[Remove from watchlist]</a></p>
+        {% else %}
+            <p><a href="{% url 'toggle_watchlist' listing.id %}">[Add to watchlist]</a></p>
+        {% endif %}
+    {% endif %}
+
+
 {% endblock %}

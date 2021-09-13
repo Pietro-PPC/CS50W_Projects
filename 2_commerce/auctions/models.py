@@ -3,6 +3,7 @@ from django.db import models
 
 
 class User(AbstractUser):
+    watchlist = models.ManyToManyField('Listing', blank=True)
     pass
 
 class Listing(models.Model):
@@ -14,11 +15,6 @@ class Listing(models.Model):
     category = models.CharField(null=True, max_length=64)
     def __str__(self):
         return f"{self.title} (R$ {self.starting_bid})"
-
-# Many to many relationship
-class Wishlist(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="wishlist")
-    listing = models.ForeignKey(Listing, on_delete=models.CASCADE)
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

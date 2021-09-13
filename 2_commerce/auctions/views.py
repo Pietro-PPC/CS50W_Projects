@@ -90,7 +90,17 @@ def listing_page(request, id):
         listing = Listing.objects.get(pk=id)
     except Listing.DoesNotExist:
         return HttpResponse("This listing does not exist!")
-    print(listing)
+
     return render(request, "auctions/listing_page.html", {
-        'listing': listing
+        'listing': listing,
+        'watchlist': request.user.watchlist.all()
     })
+
+def toggle_watchlist(request, listing_id):
+    listing = Listing.objects.get(pk=listing_id)
+    user = request.user
+    if listing not in user.watchlist.all():
+        user.watchlist.add(listing)
+    else:
+        user.watchlist.remove(listing)
+    return HttpResponseRedirect(reverse("listing", args=[user.id]))
