@@ -4,13 +4,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User, Listing
+from .models import User, Listing, Comment
 from . import page_forms
 
 
 def index(request):
     return render(request, "auctions/index.html", {
-        "listings": Listing.objects.all()
+        "listings": Listing.objects.all().filter(is_open=True)
     })
 
 
@@ -99,14 +99,19 @@ def listing_page(request, id):
 
         if float(bid) >= listing.starting_bid and float(bid) > listing.current_bid:
             listing.current_bid = bid
+            listing.current_winner = request.user
             listing.save()
             min_bid = bid
         else:
             bid_error = True
-
+    
+    watchlist = []
+    if request.user.is_authenticated:
+        watchlist = request.user.watchlist.all()
+    
     return render(request, "auctions/listing_page.html", {
         'listing': listing,
-        'watchlist': request.user.watchlist.all(),
+        'watchlist': watchlist,
         'min_bid': min_bid,
         'bid_error': bid_error
     })
@@ -118,4 +123,10 @@ def toggle_watchlist(request, listing_id):
         user.watchlist.add(listing)
     else:
         user.watchlist.remove(listing)
+    return HttpResponseRedirect(reverse("listing", args=[listing_id]))
+
+def close_listing(request, listing_id):
+    listing = Listing.objects.get(pk=listing_id)
+    listing.is_open=False
+    listing.save()
     return HttpResponseRedirect(reverse("listing", args=[listing_id]))

@@ -2,28 +2,38 @@
 
 {% block body %}
     <h1>{{ listing.title }}</h1>
+    {% if user == listing.creator and listing.is_open %}
+        <a href="{% url 'close' listing.id %}">[Close Listing]</a>
+    {% endif %}        
     <p>Description: {{ listing.description|safe }} </p>
     <p>Starting Bid: US$ {{ listing.starting_bid }}</p>
-    <p>Current Bid: US$ {{ listing.current_bid }}</p>
     <p>Image URL: {{ listing.image_url }}</p>
     <p>Creator: {{ listing.creator }}</p>
     <p>Category: {{ listing.category }}</p>
-    <p>Place Bid (your bid should be greater than the inicial value and the current bid)</p>
-    
-    <form action="{% url 'listing' listing.id %}" method=POST>
-        {% csrf_token %}
-        {% if bid_error %}
-            <p>Your bid should be greater than the current bid!</p>
-        {% endif %}
-        <input type="number" value="{{ min_bid }}" step="any" name="bid">
-        <input type="submit" value="Bid!">
-    </form>
+    <p>Current Bid: US$ {{ listing.current_bid }}</p>
+    {% if listing.current_winner != null %}
+        <p><b>Current winner:</b> {{listing.current_winner}}</p>
+    {% endif %}
+
     {% if user.is_authenticated %}
+        <p>Place Bid (your bid should be greater than the inicial value and the current bid)</p>
+        <form action="{% url 'listing' listing.id %}" method=POST>
+            {% csrf_token %}
+            {% if bid_error %}
+                <p>Your bid should be greater than the current bid!</p>
+            {% endif %}
+            <input type="number" value="{{ min_bid }}" step="any" name="bid">
+            <input type="submit" value="Bid!">
+        </form>
         {% if listing in watchlist %}
             <p><a href="{% url 'toggle_watchlist' listing.id %}">[Remove from watchlist]</a></p>
         {% else %}
             <p><a href="{% url 'toggle_watchlist' listing.id %}">[Add to watchlist]</a></p>
         {% endif %}
+    {% endif %}
+
+    {% if not listing.is_open and listing.current_winner == user %}
+        <p>Parabéns, você é o vencedor!</p>
     {% endif %}
 
 {% endblock %}
