@@ -36,4 +36,16 @@
         <p>Parabéns, você é o vencedor!</p>
     {% endif %}
 
+    <h3>Comment section</h3>
+    {% for comment in comments %}
+        <p><b>{{ comment.user }}:</b> {{ comment.text }}</p>
+    {% endfor %}
+    {% if user.is_authenticated %}
+        <form action="{% url 'listing' listing.id %}" method="POST">
+            {% csrf_token %}
+            <textarea name='text' placeholder="Comment here..." required=""></textarea>
+            <input type="submit" value="Submit">
+        </form>
+    {% endif %}
+
 {% endblock %}

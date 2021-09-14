@@ -96,15 +96,25 @@ def listing_page(request, id):
     bid_error = False
     if request.method == "POST":
         bid = request.POST.get("bid")
-
-        if float(bid) >= listing.starting_bid and float(bid) > listing.current_bid:
-            listing.current_bid = bid
-            listing.current_winner = request.user
-            listing.save()
-            min_bid = bid
-        else:
-            bid_error = True
+        text = request.POST.get("text")
+        if bid:
+            if float(bid) >= listing.starting_bid and float(bid) > listing.current_bid:
+                listing.current_bid = bid
+                listing.current_winner = request.user
+                listing.save()
+                min_bid = bid
+            else:
+                bid_error = True
+        elif text:
+            comment = Comment(
+                user=request.user,
+                listing=listing,
+                text=text
+            )
+            comment.save()
     
+    comments = Comment.objects.all().filter(listing__id=id)
+    print(comments)
     watchlist = []
     if request.user.is_authenticated:
         watchlist = request.user.watchlist.all()
@@ -113,7 +123,8 @@ def listing_page(request, id):
         'listing': listing,
         'watchlist': watchlist,
         'min_bid': min_bid,
-        'bid_error': bid_error
+        'bid_error': bid_error,
+        'comments': comments
     })
 
 def toggle_watchlist(request, listing_id):
