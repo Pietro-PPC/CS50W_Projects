@@ -150,3 +150,23 @@ def watchlist(request):
     return render (request, "auctions/watchlist.html", {
         'watchlist': user.watchlist.all()
     })
+
+def categories(request):
+    categories = Listing.objects.values_list('category', flat=True).distinct()
+    for category in categories:
+        print(category)
+    
+    return render(request, "auctions/categories.html", {
+        'categories': categories
+    })
+
+def category(request, cat):
+    listings = Listing.objects.all().filter(category=cat)
+    if (len(listings) == 0):
+        return HttpResponse("A categoria não existe!")
+
+    listings = listings.filter(is_open=True)
+    return render(request, "auctions/category.html", {
+        'category': cat,
+        'listings': listings
+    })

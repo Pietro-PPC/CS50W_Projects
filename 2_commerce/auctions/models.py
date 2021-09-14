@@ -5,7 +5,6 @@ from django.db.models.fields.related import RECURSIVE_RELATIONSHIP_CONSTANT
 
 class User(AbstractUser):
     watchlist = models.ManyToManyField('Listing', blank=True)
-    pass
 
 class Listing(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='listings')
