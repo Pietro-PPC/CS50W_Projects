@@ -91,9 +91,24 @@ def listing_page(request, id):
     except Listing.DoesNotExist:
         return HttpResponse("This listing does not exist!")
 
+    min_bid = max(listing.current_bid, listing.starting_bid)
+
+    bid_error = False
+    if request.method == "POST":
+        bid = request.POST.get("bid")
+
+        if float(bid) >= listing.starting_bid and float(bid) > listing.current_bid:
+            listing.current_bid = bid
+            listing.save()
+            min_bid = bid
+        else:
+            bid_error = True
+
     return render(request, "auctions/listing_page.html", {
         'listing': listing,
-        'watchlist': request.user.watchlist.all()
+        'watchlist': request.user.watchlist.all(),
+        'min_bid': min_bid,
+        'bid_error': bid_error
     })
 
 def toggle_watchlist(request, listing_id):

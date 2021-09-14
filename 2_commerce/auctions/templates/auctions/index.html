@@ -8,7 +8,8 @@
             <h3><a href="{% url 'listing' l.id %}">{{ l.title }}</a></h3>
             <p><b>Description:</b></p>
             <p>{{ l.description }}</p>
-            <p><b>Starting bid:</b> US$ {{ l.starting_bid }}</p>
+            <p><b>Starting price:</b> US$ {{ l.starting_bid }} </p>
+            <p><b>Current price:</b> US$ {{ l.current_bid }} </p>
             <p><b>Creator:</b> {{ l.creator }}</p>
             {% if l.category %}
                 <p><b>Category: </b> {{ l.category }}</p>
