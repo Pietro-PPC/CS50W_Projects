@@ -141,3 +141,12 @@ def close_listing(request, listing_id):
     listing.is_open=False
     listing.save()
     return HttpResponseRedirect(reverse("listing", args=[listing_id]))
+
+def watchlist(request):
+    user = request.user
+    if not user.is_authenticated:
+        return HttpResponseRedirect(reverse('index'))
+    
+    return render (request, "auctions/watchlist.html", {
+        'watchlist': user.watchlist.all()
+    })
