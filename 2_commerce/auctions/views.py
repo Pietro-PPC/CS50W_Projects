@@ -3,8 +3,11 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.db.models import Max
 
-from .models import User, Listing, Comment
+from .util import getCurrentBid
+
+from .models import User, Listing, Comment, Bid
 from . import page_forms
 
 
@@ -74,7 +77,7 @@ def new_listing(request):
                 creator=request.user,
                 title=form.cleaned_data["title"],
                 description=form.cleaned_data["description"],
-                starting_bid=form.cleaned_data["starting_bid"],
+                minimum_bid=form.cleaned_data["minimum_bid"],
                 category=form.cleaned_data["category"],
                 image_url=form.cleaned_data["url"]
             )
@@ -91,18 +94,24 @@ def listing_page(request, id):
     except Listing.DoesNotExist:
         return HttpResponse("This listing does not exist!")
 
-    min_bid = max(listing.current_bid, listing.starting_bid)
+    current_bid = getCurrentBid(listing)
+    min_bid = listing.minimum_bid if not current_bid else current_bid.value
 
     bid_error = False
     if request.method == "POST":
         bid = request.POST.get("bid")
         text = request.POST.get("text")
         if bid:
-            if float(bid) >= listing.starting_bid and float(bid) > listing.current_bid:
-                listing.current_bid = bid
-                listing.current_winner = request.user
-                listing.save()
+            bid = float(bid)
+            if (current_bid is None and bid >= listing.minimum_bid) or bid > current_bid.value:
+                new_bid = Bid(
+                    user = request.user,
+                    listing = listing,
+                    value = bid
+                )
+                new_bid.save()
                 min_bid = bid
+                current_bid = new_bid
             else:
                 bid_error = True
         elif text:
@@ -113,18 +122,14 @@ def listing_page(request, id):
             )
             comment.save()
     
-    comments = Comment.objects.all().filter(listing__id=id)
-    print(comments)
-    watchlist = []
-    if request.user.is_authenticated:
-        watchlist = request.user.watchlist.all()
-    
+    comments = listing.comments.all()
+
     return render(request, "auctions/listing_page.html", {
         'listing': listing,
-        'watchlist': watchlist,
         'min_bid': min_bid,
         'bid_error': bid_error,
-        'comments': comments
+        'comments': comments,
+        'current_bid': current_bid
     })
 
 def toggle_watchlist(request, listing_id):

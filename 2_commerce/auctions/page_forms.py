@@ -6,6 +6,6 @@ class NewListingForm(forms.Form):
         })
     )
     description = forms.CharField(widget=forms.Textarea)
-    starting_bid = forms.FloatField()
+    minimum_bid = forms.FloatField()
     category = forms.CharField(required=False)
     url = forms.URLField(required=False, label="Image URL")

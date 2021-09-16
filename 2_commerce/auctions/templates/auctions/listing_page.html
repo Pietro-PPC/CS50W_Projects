@@ -2,17 +2,24 @@
 
 {% block body %}
     <h1>{{ listing.title }}</h1>
+    {% if listing.is_open %}
+        <p>This listing is closed</p>
+    {% endif %}
+    
     {% if user == listing.creator and listing.is_open %}
         <a href="{% url 'close' listing.id %}">[Close Listing]</a>
     {% endif %}        
-    <p>Description: {{ listing.description|safe }} </p>
-    <p>Starting Bid: US$ {{ listing.starting_bid }}</p>
-    <p>Image URL: {{ listing.image_url }}</p>
-    <p>Creator: {{ listing.creator }}</p>
-    <p>Category: {{ listing.category }}</p>
-    <p>Current Bid: US$ {{ listing.current_bid }}</p>
-    {% if listing.current_winner != null %}
-        <p><b>Current winner:</b> {{listing.current_winner}}</p>
+    <p><b>Description:</b> {{ listing.description|safe }} </p>
+    <p><b>Minimum Bid:</b> US$ {{ listing.minimum_bid }}</p>
+    <p><b>Image URL:</b> {{ listing.image_url }}</p>
+    <p><b>Creator:</b> {{ listing.creator }}</p>
+    <p><b>Category:</b> {{ listing.category }}</p>
+    
+    {% if current_bid %}
+        <p><b>Current Bid:</b> US$ {{ current_bid.value }}</p>
+        <p><b>Current winner:</b> {{current_bid.user}}</p>
+    {% else %}
+        <p>Be the first to place a bid!</p>
     {% endif %}
 
     {% if user.is_authenticated %}
@@ -25,14 +32,14 @@
             <input type="number" value="{{ min_bid }}" step="any" name="bid">
             <input type="submit" value="Bid!">
         </form>
-        {% if listing in watchlist %}
+        {% if listing in user.watchlist.all %}
             <p><a href="{% url 'toggle_watchlist' listing.id %}">[Remove from watchlist]</a></p>
         {% else %}
             <p><a href="{% url 'toggle_watchlist' listing.id %}">[Add to watchlist]</a></p>
         {% endif %}
     {% endif %}
 
-    {% if not listing.is_open and listing.current_winner == user %}
+    {% if not listing.is_open and current_bid.user == user %}
         <p>Parabéns, você é o vencedor!</p>
     {% endif %}
 
