@@ -11,8 +11,8 @@ class Listing(models.Model):
     title = models.CharField(max_length=64)
     description = models.TextField()
     minimum_bid = models.FloatField()
-    image_url = models.URLField(null=True)
-    category = models.CharField(null=True, max_length=64)
+    image_url = models.URLField(null=True, blank=True)
+    category = models.CharField(max_length=64, null=True, blank=True)
     def __str__(self):
         return f"{self.title} (US$ {self.minimum_bid})"
 
