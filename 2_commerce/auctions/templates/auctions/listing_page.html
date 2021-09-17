@@ -15,14 +15,17 @@
     <p><b>Creator:</b> {{ listing.creator }}</p>
     <p><b>Category:</b> {{ listing.category }}</p>
     
-    {% if current_bid %}
+    {% if current_bid and listing.is_open %}
         <p><b>Current Bid:</b> US$ {{ current_bid.value }}</p>
-        <p><b>Current winner:</b> {{current_bid.user}}</p>
-    {% else %}
+        <p><b>Current winner:</b> {{ current_bid.user }}</p>
+    {% elif listing.is_open %}
         <p>Be the first to place a bid!</p>
+    {% elif current_bid %}
+        <p><b>Listing winner:</b> {{ current_bid.user }} </p>
+        <p><b>Winning bid:</b> {{ current_bid.value }} </p>
     {% endif %}
 
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and listing.is_open %}
         <p>Place Bid (your bid should be greater than the inicial value and the current bid)</p>
         <form action="{% url 'listing' listing.id %}" method=POST>
             {% csrf_token %}
@@ -47,7 +50,7 @@
     {% for comment in comments %}
         <p><b>{{ comment.user }}:</b> {{ comment.text }}</p>
     {% endfor %}
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and listing.is_open%}
         <form action="{% url 'listing' listing.id %}" method="POST">
             {% csrf_token %}
             <textarea name='text' placeholder="Comment here..." required=""></textarea>
