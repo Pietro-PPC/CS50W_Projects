@@ -5,15 +5,16 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.db.models import Max
 
-from .util import getCurrentBid
+from .util import getCurrentBid, getListingsBids
 
 from .models import User, Listing, Comment, Bid
 from . import page_forms
 
 
 def index(request):
+    listings = Listing.objects.all().filter(is_open=True)
     return render(request, "auctions/index.html", {
-        "listings": Listing.objects.all().filter(is_open=True)
+        "listings": getListingsBids(listings)
     })
 
 
@@ -151,9 +152,9 @@ def watchlist(request):
     user = request.user
     if not user.is_authenticated:
         return HttpResponseRedirect(reverse('index'))
-    
+
     return render (request, "auctions/watchlist.html", {
-        'watchlist': user.watchlist.all()
+        'watchlist': getListingsBids(user.watchlist.all())
     })
 
 def categories(request):
@@ -173,5 +174,5 @@ def category(request, cat):
     listings = listings.filter(is_open=True)
     return render(request, "auctions/category.html", {
         'category': cat,
-        'listings': listings
+        'listings': getListingsBids(listings)
     })

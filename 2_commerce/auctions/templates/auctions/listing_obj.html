@@ -1,16 +1,16 @@
 <div>
-    <h3><a href="{% url 'listing' l.id %}">{{ l.title }}</a></h3>
+    <h3><a href="{% url 'listing' l.listing.id %}">{{ l.listing.title }}</a></h3>
     <p><b>Description:</b></p>
-    <p>{{ l.description }}</p>
-    <p><b>Starting price:</b> US$ {{ l.minimum_bid }} </p>
-    {% if l.current_bid %}
-    <p><b>Current price:</b> US$ {{ l.current_bid }} </p>
+    <p>{{ l.listing.description }}</p>
+    <p><b>Starting price:</b> US$ {{ l.listing.minimum_bid }} </p>
+    {% if l.cur_bid %}
+    <p><b>Current price:</b> US$ {{ l.cur_bid }} </p>
     {% else %}
     <p>No bids yet</p>
     {% endif %}
-    <p><b>Creator:</b> {{ l.creator }}</p>
-    {% if l.category %}
-        <p><b>Category: </b> {{ l.category }}</p>
+    <p><b>Creator:</b> {{ l.listing.creator }}</p>
+    {% if l.listing.category %}
+        <p><b>Category: </b> {{ l.listing.category }}</p>
     {% else %}
         <p><b>Category: </b> None </p>
     {% endif %}
