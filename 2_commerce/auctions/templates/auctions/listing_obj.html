@@ -22,6 +22,8 @@
         <img src="{% static 'image/no_image.jpg' %}">
         {% endif %}
         
+        <p><b>Initial Price:</b> {{l.listing.minimum_bid}}</p>
+
         <p><b>Description:</b></p>
         <p>{{ l.listing.description }}</p>
     
