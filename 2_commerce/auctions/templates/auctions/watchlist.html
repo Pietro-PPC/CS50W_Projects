@@ -2,7 +2,11 @@
 
 {% block body %}
     <h1>Watchlist</h1>
-    {% for l in watchlist %}
-        {% include 'auctions/listing_obj.html' %}
-    {% endfor %}
+    <div class="row">
+        {% for l in watchlist %}
+            <div class="col-md-6 col-sm-12">
+                {% include 'auctions/listing_obj.html' %}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

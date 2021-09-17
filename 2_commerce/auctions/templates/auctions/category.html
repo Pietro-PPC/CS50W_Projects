@@ -3,9 +3,13 @@
 {% block body %}
     <h2>{{ category }}</h2>
     {% if listings|length > 0 %}
-        {% for l in listings %}
-            {% include 'auctions/listing_obj.html' %}
-        {% endfor %}
+        <div class="row">
+            {% for l in listings %}
+                <div class="col-md-6 col-sm-12">
+                    {% include 'auctions/listing_obj.html' %}
+                </div>
+            {% endfor %}
+        </div>
     {% else %}
         <p>No active listings for this category</p>
     {% endif %}
