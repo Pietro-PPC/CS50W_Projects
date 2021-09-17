@@ -1,4 +1,5 @@
-<div>
+<div class="listing_showcase" >
+    
     <h3><a href="{% url 'listing' l.listing.id %}">{{ l.listing.title }}</a></h3>
     <p><b>Description:</b></p>
     <p>{{ l.listing.description }}</p>
@@ -7,7 +8,7 @@
     {% else %}
     <p>No bids yet</p>
     {% endif %}
-    
+
     {% if l.listing.category %}
         <p><b>Category: </b> {{ l.listing.category }}</p>
     {% else %}
