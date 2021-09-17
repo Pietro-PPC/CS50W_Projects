@@ -3,10 +3,13 @@ body {
 }
 
 .listing_showcase{
+    position: relative;
     box-sizing: border-box;
-    border: 2px black solid;
+    overflow: hidden;
+
+    border: 1px gray solid;
     border-radius: 20px;
-    margin: 20px;
+    margin: 10px;
     padding: 10px
 }
 
@@ -16,9 +19,40 @@ body {
 }
 
 .listing_showcase img{
+    display: block;
     border-radius: 10%;
+    width: 60%;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 1em auto 0em auto;
+    clear: both;
 }
 
 .listing_showcase img:hover{
     box-shadow: 2px 2px 5px rgb(219, 219, 219)
+}
+
+.listing_showcase .price{
+    display: block;
+
+    position: absolute;
+    right: 0px;
+    top: 0px;
+
+    padding: 10px;
+    height: 3em;
+    min-width: 30%;
+
+    border: 1px solid gray;
+    border-bottom-left-radius: 20px;
+
+    background-color: blue;
+    color: white;
+
+    text-align: center;
+}
+
+.listing_showcase .blank_img{
+    width: 100%;
+    max-width: 150px;
 }

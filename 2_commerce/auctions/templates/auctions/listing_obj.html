@@ -1,20 +1,27 @@
 <div class="listing_showcase" >
     
     <h3><a href="{% url 'listing' l.listing.id %}">{{ l.listing.title }}</a></h3>
+    
+    <div class="price">
+        {% if l.cur_bid %}
+        <h4>US$ {{ l.cur_bid }}</h4>
+        {% else %}
+        <h4>US$ --</h4>
+        {% endif %}
+    </div>
+
+    {% if l.listing.image_url  %}
+    <img src={{l.listing.image_url}}>
+    {% else %}
+    <div class="blank_img"></div>
+    {% endif %}
+    
     <p><b>Description:</b></p>
     <p>{{ l.listing.description }}</p>
-    {% if l.cur_bid %}
-    <p><b>Current price:</b> US$ {{ l.cur_bid }} </p>
-    {% else %}
-    <p>No bids yet</p>
-    {% endif %}
 
     {% if l.listing.category %}
         <p><b>Category: </b> {{ l.listing.category }}</p>
     {% else %}
         <p><b>Category: </b> None </p>
-    {% endif %}
-    {% if l.listing.image_url  %}
-        <img src={{l.listing.image_url}}>
     {% endif %}
 </div>
