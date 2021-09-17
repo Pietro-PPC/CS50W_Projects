@@ -14,5 +14,7 @@
     {% else %}
         <p><b>Category: </b> None </p>
     {% endif %}
-    <img src={{l.listing.image_url}}>
+    {% if l.listing.image_url  %}
+        <img src={{l.listing.image_url}}>
+    {% endif %}
 </div>
