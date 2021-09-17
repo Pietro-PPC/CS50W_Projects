@@ -46,6 +46,7 @@
         <p>Parabéns, você é o vencedor!</p>
     {% endif %}
 
+    <img src={{listing.image_url}}>
     <h3>Comment section</h3>
     {% for comment in comments %}
         <p><b>{{ comment.user }}:</b> {{ comment.text }}</p>
@@ -57,5 +58,6 @@
             <input type="submit" value="Submit">
         </form>
     {% endif %}
+
 
 {% endblock %}
