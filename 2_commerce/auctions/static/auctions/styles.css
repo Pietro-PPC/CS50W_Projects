@@ -1,5 +1,5 @@
 body {
-    height: 100vh;
+    min-height: 100vh;
     width: 80%;
     margin: 0 auto;
     max-width: 1200px;
@@ -128,4 +128,50 @@ header a:hover{
 .categories a:link{
     color: white;
     text-decoration: none;
+}
+
+.img-price{
+    padding: 20px
+}
+
+.img-price img{
+    display: block;
+    height: 250px;
+    width: auto;
+    max-width: 100%;
+    max-height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+.img-price .cur_bid{
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    width: 250px;
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+.img-price .cur_bid h3{
+    margin: 0;
+}
+
+.img-price .cur_bid_title, .img-price .cur_bid_bidder{
+    font-size: 1.5em;
+    font-weight: 500;
+    margin: 0;
+}
+
+.listing-page-body{
+    padding: 0px 10%;
+}
+
+.listing-page-body .description{
+    padding: 10px;
+    border: 1px lightgrey solid;
+    border-radius: 10px;
 }

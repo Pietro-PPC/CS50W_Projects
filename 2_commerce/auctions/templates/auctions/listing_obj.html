@@ -8,7 +8,7 @@
         </div>
         <div class="price">
             {% if l.cur_bid %}
-            <h4>US$ {{ l.cur_bid }}</h4>
+            <h4>US$ {{ l.cur_bid|floatformat:2 }}</h4>
             {% else %}
             <h4>US$ --</h4>
             {% endif %}
@@ -24,10 +24,9 @@
         {% endif %}
         </a>
         
-        <p><b>Initial Price:</b> US$ {{l.listing.minimum_bid}}</p>
+        <p><b>Initial Price:</b> US$ {{l.listing.minimum_bid|floatformat:2}}</p>
 
-        <p><b>Description:</b></p>
-        <p>{{ l.listing.description }}</p>
+        <p><b>Description:</b> {{ l.listing.description }}</p>
     
         {% if l.listing.category %}
             <p><b>Category: </b> {{ l.listing.category }}</p>

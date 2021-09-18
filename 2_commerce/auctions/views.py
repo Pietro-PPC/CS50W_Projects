@@ -157,7 +157,7 @@ def watchlist(request):
     })
 
 def categories(request):
-    categories = Listing.objects.values_list('category', flat=True).distinct()
+    categories = Listing.objects.values_list('category', flat=True).distinct().order_by('category')
     
     return render(request, "auctions/categories.html", {
         'categories': categories
