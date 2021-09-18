@@ -16,13 +16,15 @@
     </div>
 
     <div class="showcase_body">
+        <a href="{% url 'listing' l.listing.id %}">
         {% if l.listing.image_url  %}
         <img src={{l.listing.image_url}}>
         {% else %}
         <img src="{% static 'image/no_image.jpg' %}">
         {% endif %}
+        </a>
         
-        <p><b>Initial Price:</b> {{l.listing.minimum_bid}}</p>
+        <p><b>Initial Price:</b> US$ {{l.listing.minimum_bid}}</p>
 
         <p><b>Description:</b></p>
         <p>{{ l.listing.description }}</p>

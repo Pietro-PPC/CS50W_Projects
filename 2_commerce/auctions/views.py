@@ -70,7 +70,6 @@ def register(request):
         return render(request, "auctions/register.html")
 
 def new_listing(request):
-    print(request.user)
     if request.method == 'POST':
         form = page_forms.NewListingForm(request.POST)
         if form.is_valid():
@@ -159,8 +158,6 @@ def watchlist(request):
 
 def categories(request):
     categories = Listing.objects.values_list('category', flat=True).distinct()
-    for category in categories:
-        print(category)
     
     return render(request, "auctions/categories.html", {
         'categories': categories
