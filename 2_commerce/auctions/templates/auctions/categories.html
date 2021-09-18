@@ -1,7 +1,7 @@
 {% extends 'auctions/layout.html' %}
 
 {% block body %}
-<h2>Categories</h2>
+<h2 class="page-title">Categories</h2>
 <ul class="categories row">
     {% for c in categories %}
     <a href="{% url 'category' c %}" class="col-md-6 col-sm-12">

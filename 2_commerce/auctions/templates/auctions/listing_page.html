@@ -1,7 +1,7 @@
 {% extends 'auctions/layout.html' %}
 
 {% block body %}
-    <h1>{{ listing.title }}</h1>
+    <h2 class="page-title">Listing: {{ listing.title }}</h1>
     {% if not listing.is_open %}
         <p>This listing is closed</p>
     {% endif %}
