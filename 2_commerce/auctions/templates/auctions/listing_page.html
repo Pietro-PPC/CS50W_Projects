@@ -59,7 +59,11 @@ Listing: {{listing.title}}
             <div class="col-6 left" style="text-align: center">
                 <p class="cur_bid_title left">Bidder</p>
                 <div>
+                    {% if current_bid %}
                     <p class="cur_bid_title left">{{current_bid.user}}</p>
+                    {% else %}
+                    <p class="cur_bid_title left">None</p>
+                    {% endif %}
                 </div>
             </div>
         </div>

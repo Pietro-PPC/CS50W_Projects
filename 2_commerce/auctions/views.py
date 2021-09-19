@@ -125,7 +125,6 @@ def listing_page(request, id):
             )
             comment.save()
     
-    # Gets minimum value possible to bid
     min_bid = listing.minimum_bid if not current_bid else current_bid.value
     comments = listing.comments.all()
 
@@ -138,6 +137,9 @@ def listing_page(request, id):
     })
 
 def toggle_watchlist(request, listing_id):
+    """
+    Toggles if listing is in user's watchlist
+    """
     listing = Listing.objects.get(pk=listing_id)
     user = request.user
     if listing not in user.watchlist.all():
@@ -148,6 +150,7 @@ def toggle_watchlist(request, listing_id):
 
 def close_listing(request, listing_id):
     listing = Listing.objects.get(pk=listing_id)
+    # Closes only if the requester is the owner
     if listing.creator == request.user:
         listing.is_open=False
         listing.save()
@@ -164,13 +167,21 @@ def watchlist(request):
     })
 
 def categories(request):
-    categories = Listing.objects.filter(is_open=True).values_list('category', flat=True).distinct().order_by('category')
+    """
+    Page with all the categories with open listings
+    """
+    # Gets a list of all the categories with open listings
+    categories = Listing.objects.filter(is_open=True).values_list('category', flat=True)
+    categories = categories.distinct().order_by('category')
     
     return render(request, "auctions/categories.html", {
         'categories': categories
     })
 
 def category(request, cat):
+    """
+    Page with all open listings within category cat
+    """
     listings = Listing.objects.all().filter(category=cat)
     if (len(listings) == 0):
         return HttpResponse("A categoria não existe!")
