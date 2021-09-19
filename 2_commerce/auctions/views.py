@@ -12,6 +12,9 @@ from . import page_forms
 
 
 def index(request):
+    """
+    Main page - Active listings
+    """
     listings = Listing.objects.all().filter(is_open=True)
     return render(request, "auctions/index.html", {
         "listings": getListingsBids(listings)
@@ -89,13 +92,13 @@ def new_listing(request):
     })
 
 def listing_page(request, id):
+    # Tests if listing page requested exists
     try:
         listing = Listing.objects.get(pk=id)
     except Listing.DoesNotExist:
-        return HttpResponse("This listing does not exist!")
+        return HttpResponseRedirect(reverse("index"))
 
     current_bid = getCurrentBid(listing)
-    min_bid = listing.minimum_bid if not current_bid else current_bid.value
 
     bid_error = False
     if request.method == "POST":
@@ -122,6 +125,8 @@ def listing_page(request, id):
             )
             comment.save()
     
+    # Gets minimum value possible to bid
+    min_bid = listing.minimum_bid if not current_bid else current_bid.value
     comments = listing.comments.all()
 
     return render(request, "auctions/listing_page.html", {

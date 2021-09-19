@@ -71,7 +71,7 @@ Listing: {{listing.title}}
                 {% if bid_error %}
                 <p class="error-msg">Your bid should be greater than the current bid!</p>
                 {% endif %}
-                <input class="form-control bid-form" type="number" value="{{ min_bid }}" step="0.25" name="bid">
+                <input class="form-control bid-form" type="number" value="{{ min_bid|floatformat:2 }}" step="0.01" name="bid">
                 <input class="bid-submit dark-button" type="submit" value="Bid!">
             </form>
         {% endif %}
