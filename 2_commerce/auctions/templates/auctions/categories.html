@@ -7,6 +7,9 @@ Categories
 {% block body %}
 <h2 class="page-title">Categories</h2>
 <ul class="categories row">
+    {% if categories|length == 0 %}
+    <h3 class="error">No open listings with categories!</h3>
+    {% else %}
     {% for c in categories %}
     <a href="{% url 'category' c %}" class="col-md-6 col-sm-12">
         <li class="dark-button">
@@ -14,6 +17,7 @@ Categories
         </li>
     </a>
     {% endfor %}
+    {% endif %}
 </ul>
 
 {% endblock %}

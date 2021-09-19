@@ -173,6 +173,7 @@ def categories(request):
     # Gets a list of all the categories with open listings
     categories = Listing.objects.filter(is_open=True).values_list('category', flat=True)
     categories = categories.distinct().order_by('category')
+    categories = list(filter(None, categories))
     
     return render(request, "auctions/categories.html", {
         'categories': categories

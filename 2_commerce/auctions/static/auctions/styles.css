@@ -155,6 +155,11 @@ header a:hover{
     padding: 10px;
 }
 
+.categories .error{
+    width: 100%;
+    text-align: center;
+}
+
 .dark-button{
     background-color: rgb(80, 80, 80);
     text-align: center;
