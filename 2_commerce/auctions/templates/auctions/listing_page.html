@@ -47,7 +47,13 @@ Listing: {{listing.title}}
         <p class="description"><b class="lightblue">Description:</b> {{ listing.description|safe }} </p>
         <div class="row bid">
             <div class="col-6 right" style="text-align: center">
-                <p class="cur_bid_title right">Current bid</p>
+                <p class="cur_bid_title right">
+                    {% if listing.is_open %}
+                    Current Bid
+                    {% else %}
+                    Winning Bid
+                    {% endif %}
+                </p>
                 <div class="cur_bid right">
                     {% if current_bid %}
                     <h3>US$ {{current_bid.value|floatformat:2}}</h3>
@@ -57,7 +63,13 @@ Listing: {{listing.title}}
                 </div>
             </div>
             <div class="col-6 left" style="text-align: center">
-                <p class="cur_bid_title left">Bidder</p>
+                <p class="cur_bid_title left">
+                    {% if listing.is_open %}
+                    Bidder
+                    {% else %}
+                    Winner
+                    {% endif %}
+                </p>
                 <div>
                     {% if current_bid %}
                     <p class="cur_bid_title left">{{current_bid.user}}</p>
