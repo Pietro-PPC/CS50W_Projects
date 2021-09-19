@@ -8,16 +8,21 @@ body {
     margin: 0 auto;
     max-width: 1200px;
     border: 1px black solid;
-    background-color: lightgray;
     border-bottom: none;
     border-top: none;
-    
+    background-color: lightgray;
     font-family: lato;
+}
+
+section{
+    margin-top: 0;
+    padding: 0 2%;
+    background-color: lightgray;
 }
 
 body .page-title{
     text-align: center;
-    margin: 10px 0px;
+    margin: 10px 0px 30px 0px;
 }
 
 header{
@@ -137,17 +142,17 @@ header a:hover{
     padding: 10px;
 }
 
-.categories li{
+.dark-button{
     background-color: rgb(80, 80, 80);
     text-align: center;
     font-size: 20px;
-    margin: 5px;
     padding: 5px;
     border-radius: 5px;
     border: 1px lightblue solid;
+    color: lightblue;
 }
 
-.categories li:hover{
+.dark-button:hover{
     background-color: rgb(50, 50, 50);
     box-shadow: 2px 2px 4px grey;
 }
@@ -157,8 +162,12 @@ header a:hover{
     text-decoration: none;
 }
 
+.categories li{
+    margin: 5px;
+}
+
 .img-info{
-    padding: 20px
+    padding: 20px;
 }
 
 .img-info img{
@@ -226,4 +235,22 @@ header a:hover{
     padding: 6px;
     line-height: 20px;
     vertical-align: middle;
+}
+
+.new-listing{
+    margin: 10px 0;
+}
+
+.new-listing-submit{
+    margin-left: 2%;
+    margin-bottom: 15px;
+    background-color: lightblue;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px grey solid;
+}
+
+.new-listing-submit:hover{
+    background-color: lightskyblue;
+    box-shadow: 2px 3px 5px rgba(0,0,0,0.2)
 }
