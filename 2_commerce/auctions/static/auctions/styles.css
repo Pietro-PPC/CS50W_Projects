@@ -4,7 +4,7 @@ html{
 
 body {
     min-height: 100vh;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     max-width: 1100px;
     border-bottom: none;
@@ -55,6 +55,7 @@ header a:hover{
 
     color: white;
 }
+
 
 .listing_showcase:hover{
     box-shadow: 5px 5px 10px gray;
@@ -111,10 +112,17 @@ header a:hover{
     padding: 10px;
 }
 
+.listing_showcase .img-container{
+    width: 300px;
+    height: 300px;
+    max-width: 100%;
+    margin: 0 auto 15px auto;
+}
+
 .listing_showcase img{
     display: block;
     border-radius: 10%;
-    width: 70%;
+    width: 100%;
     max-width: 300px;
     max-height: 300px;
     min-width: 150px;
@@ -130,6 +138,12 @@ header a:hover{
 .listing_showcase .blank_img{
     width: 100%;
     max-width: 150px;
+}
+
+.listing_showcase .showcase-description{
+    line-height: 1.1em;
+    max-height: 3.3em;
+    overflow: hidden;
 }
 
 .listing_showcase .listing-item{
