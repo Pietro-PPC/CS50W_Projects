@@ -8,7 +8,7 @@ Categories
 <h2 class="page-title">Categories</h2>
 <ul class="categories row">
     {% if categories|length == 0 %}
-    <p class="empty_listings">No active listings with categories!</p>
+    <p class="empty_listings">No active listings with categories! </p>
     {% else %}
     {% for c in categories %}
     <a href="{% url 'category' c %}" class="col-md-6 col-sm-12">

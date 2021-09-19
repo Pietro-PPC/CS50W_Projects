@@ -73,6 +73,9 @@ def register(request):
         return render(request, "auctions/register.html")
 
 def new_listing(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('login'))
+
     if request.method == 'POST':
         form = page_forms.NewListingForm(request.POST)
         if form.is_valid():
