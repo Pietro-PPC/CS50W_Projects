@@ -10,13 +10,19 @@
         <div class="col-6">
             <img src={{listing.image_url}}>
         </div>
-        <div class="col-6">
+        <div class="col-6 info-col">
             <div class="info">
-                <p><b>Creator:</b> {{ listing.creator }}</p>
-                <p><b>Category:</b> {{ listing.category }}</p>
-                <p><b>Starting Bid:</b> US$ {{ listing.minimum_bid|floatformat:2 }}</p>
                 {% if user == listing.creator and listing.is_open %}
-                <a href="{% url 'close' listing.id %}">[Close Listing]</a>
+                <p><a href="{% url 'close' listing.id %}">[Close Listing]</a></p>
+                {% endif %}
+                <p><b class="lightblue">Creator:</b> {{ listing.creator }}</p>
+                <p><b class="lightblue">Starting Bid:</b> US$ {{ listing.minimum_bid|floatformat:2 }}</p>
+                <p><b class="lightblue">Category:</b> {{ listing.category }}</p>
+
+                {% if listing in user.watchlist.all and user.is_authenticated and listing.is_open %}
+                <p><a href="{% url 'toggle_watchlist' listing.id %}">[Remove from watchlist]</a></p>
+                {% else %}
+                <p><a href="{% url 'toggle_watchlist' listing.id %}">[Add to watchlist]</a></p>
                 {% endif %}
             </div>
         </div>
@@ -24,11 +30,11 @@
     
     
     <div class="listing-page-body">
-        <p class="description"><b>Description:</b> {{ listing.description|safe }} </p>
+        <p class="description"><b class="lightblue">Description:</b> {{ listing.description|safe }} </p>
         <div class="row bid">
-            <div class="col-8" style="text-align: center">
-                <p class="cur_bid_title">Current bid:</p>
-                <div class="cur_bid">
+            <div class="col-6 right" style="text-align: center">
+                <p class="cur_bid_title right">Current bid</p>
+                <div class="cur_bid right">
                     {% if current_bid %}
                     <h3>US$ {{current_bid.value|floatformat:2}}</h3>
                     {% else %}
@@ -36,46 +42,43 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="col-4" style="text-align: center">
-                <p class="cur_bid_title">Bidder:</p>
+            <div class="col-6 left" style="text-align: center">
+                <p class="cur_bid_title left">Bidder</p>
                 <div>
-                    <p class="cur_bid_title">{{current_bid.user}}</p>
+                    <p class="cur_bid_title left">{{current_bid.user}}</p>
                 </div>
             </div>
         </div>
         
         {% if user.is_authenticated and listing.is_open %}
-            <p class="cur_bid_title">Place Bid</p>
+            <p class="cur_bid_title">Place Bid (US$)</p>
             <form action="{% url 'listing' listing.id %}" method=POST>
                 {% csrf_token %}
                 {% if bid_error %}
                 <p>Your bid should be greater than the current bid!</p>
                 {% endif %}
                 <input class="form-control bid-form" type="number" value="{{ min_bid }}" step="0.25" name="bid">
-                <input class="bid-submit" type="submit" value="Bid!">
+                <input class="bid-submit dark-button" type="submit" value="Bid!">
             </form>
-            {% if listing in user.watchlist.all %}
-            <p><a href="{% url 'toggle_watchlist' listing.id %}">[Remove from watchlist]</a></p>
-            {% else %}
-            <p><a href="{% url 'toggle_watchlist' listing.id %}">[Add to watchlist]</a></p>
-            {% endif %}
-            {% endif %}
+        {% endif %}
             
-            {% if not listing.is_open and current_bid.user == user %}
-            <p>Parabéns, você é o vencedor!</p>
-            {% endif %}
-            
-            <h3>Comment section</h3>
+        {% if not listing.is_open and current_bid.user == user %}
+        <p>Parabéns, você é o vencedor!</p>
+        {% endif %}
+        
+        <p class="cur_bid_title">Comments</h3>
+        <div class="comment-section">
             {% for comment in comments %}
-            <p><b>{{ comment.user }}:</b> {{ comment.text }}</p>
+            <p class="comment"><b class="lightblue">{{ comment.user }}:</b> {{ comment.text }}</p>
             {% endfor %}
             {% if user.is_authenticated and listing.is_open%}
             <form action="{% url 'listing' listing.id %}" method="POST">
                 {% csrf_token %}
-                <textarea name='text' placeholder="Comment here..." required=""></textarea>
-                <input type="submit" value="Submit">
+                <textarea class="form-control comment-text" name='text' placeholder="Comment here..." required=""></textarea>
+                <input class="dark-button" type="submit" value="Submit">
             </form>
             {% endif %}
         </div>
+    </div>
         
-        {% endblock %}
+{% endblock %}

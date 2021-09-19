@@ -7,7 +7,6 @@ body {
     width: 80%;
     margin: 0 auto;
     max-width: 1200px;
-    border: 1px black solid;
     border-bottom: none;
     border-top: none;
     background-color: lightgray;
@@ -16,7 +15,7 @@ body {
 
 section{
     margin-top: 0;
-    padding: 0 2%;
+    padding: 0 2% 30px 2%;
     background-color: lightgray;
 }
 
@@ -179,25 +178,39 @@ header a:hover{
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;
+    border: 1px rgb(50, 50, 50) solid;
 }
 
-.img-info .info{
+.img-info .info-col{
     color: white;
+    border-radius: 10px;
+    background-color:rgb(50, 50, 50);
+    padding: 10px;
+}
+
+.img-info .info-col a:link{
+    color: lightblue;
+}
+
+.listing-page-body{
+    padding: 0px 10%;
 }
 
 .listing-page-body .cur_bid{
     text-align: center;
-    display: inline-block;
+    display: block;
     padding: 10px;
-    background-color: blue;
-    color: white;
+    background-color: lightblue;
     border-radius: 10px;
     width: 250px;
     max-width: 100%;
     margin-bottom: 10px;
+    margin-left: auto;
+    border: 2px rgb(50, 50, 50) solid;
 }
 .listing-page-body .cur_bid h3{
     margin: 0;
+    color: rgb(50, 50, 50);
 }
 
 .listing-page-body .cur_bid_title{
@@ -206,13 +219,10 @@ header a:hover{
     margin: 0;
 }
 
-.listing-page-body{
-    padding: 0px 10%;
-}
-
 .listing-page-body .description{
     padding: 10px;
-    border: 1px lightgrey solid;
+    background-color: rgb(50,50,50);
+    color: white;
     border-radius: 10px;
 }
 
@@ -253,4 +263,24 @@ header a:hover{
 .new-listing-submit:hover{
     background-color: lightskyblue;
     box-shadow: 2px 3px 5px rgba(0,0,0,0.2)
+}
+
+.comment-section .comment{
+    background-color: rgb(50, 50, 50);
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: white;
+    margin: 5px 0;
+}
+
+.comment-section .comment-text{
+    margin: 5px 0;
+}
+
+.right{
+    text-align: right;
+}
+
+.left{
+    text-align: left;
 }
