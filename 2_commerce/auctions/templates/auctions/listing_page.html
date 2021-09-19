@@ -26,6 +26,7 @@ Listing: {{listing.title}}
             <img src="{% static 'image/no_image.jpg' %}">
             {% endif %}
         </div>
+
         <div class="col-md-5 col-sm-12 info-col">
             <div class="info">
                 {% if user == listing.creator and listing.is_open %}
@@ -35,9 +36,9 @@ Listing: {{listing.title}}
                 <p><b class="lightblue">Starting Bid:</b> US$ {{ listing.minimum_bid|floatformat:2 }}</p>
                 <p><b class="lightblue">Category:</b> {{ listing.category }}</p>
 
-                {% if listing in user.watchlist.all and user.is_authenticated and listing.is_open %}
+                {% if listing in user.watchlist.all and user.is_authenticated %}
                 <p><a href="{% url 'toggle_watchlist' listing.id %}">[Remove from watchlist]</a></p>
-                {% elif user.is_authenticated and listing.is_open %}
+                {% elif user.is_authenticated %}
                 <p><a href="{% url 'toggle_watchlist' listing.id %}">[Add to watchlist]</a></p>
                 {% endif %}
             </div>
