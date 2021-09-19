@@ -1,5 +1,9 @@
 {% extends 'auctions/layout.html' %}
 
+{% block title %}
+Category {{category}}
+{% endblock %}
+
 {% block body %}
     <h2 class="page-title">Category: {{ category }}</h2>
     {% if listings|length > 0 %}
