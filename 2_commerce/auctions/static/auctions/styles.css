@@ -150,6 +150,20 @@ header a:hover{
     color: lightblue;
 }
 
+.empty_listings{
+    background-color: rgb(50, 50, 50);
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    width: 100%
+}
+
+.empty_listings a:link{
+    color: lightblue;
+}
+
 .categories{
     list-style-type: none;
     padding: 10px;

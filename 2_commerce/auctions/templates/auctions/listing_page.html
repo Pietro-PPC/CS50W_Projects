@@ -9,7 +9,6 @@ Listing: {{listing.title}}
 <h2 class="page-title">Listing: {{ listing.title }}</h1>
     <div class="listing-page-body">
     {% if not listing.is_open %}
-    <h3 class="warning">Warning</h3>
     <div class="messages">
         <b><p class="warning-msg">This listing has already been closed!</p></b>
         {% if not listing.is_open and current_bid.user == user %}

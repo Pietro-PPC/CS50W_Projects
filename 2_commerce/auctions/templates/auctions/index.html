@@ -3,6 +3,12 @@
 {% block body %}
     <h2 class="page-title">Active Listings</h2>
 
+    {% if listings|length == 0 %}
+    <p class="empty_listings">
+        No active listings. 
+        <a href="{% url 'new_listing' %}">Create one now!</a>
+    </p>
+    {% else %}
     <div class=row>
         {% for l in listings %}
             <div class="col-md-6 col-sm-12">
@@ -10,4 +16,5 @@
             </div>
         {% endfor %}
     </div>
+    {% endif %}
 {% endblock %}
