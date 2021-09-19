@@ -24,14 +24,13 @@
         {% endif %}
         </a>
         
-        <p><b>Initial Price:</b> US$ {{l.listing.minimum_bid|floatformat:2}}</p>
-
-        <p><b>Description:</b> {{ l.listing.description }}</p>
+        <p><b class="listing-item">Initial Price:</b> US$ {{l.listing.minimum_bid|floatformat:2}}</p>
+        <p><b class="listing-item">Description:</b> {{ l.listing.description }}</p>
     
         {% if l.listing.category %}
-            <p><b>Category: </b> {{ l.listing.category }}</p>
+            <p><b class="listing-item">Category: </b> {{ l.listing.category }}</p>
         {% else %}
-            <p><b>Category: </b> None </p>
+            <p><b class="listing-item">Category: </b> None </p>
         {% endif %}
     </div>
 </div>

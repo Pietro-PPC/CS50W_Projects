@@ -9,10 +9,10 @@
     </head>
     <body>
         <header>
-            <h1>Auctions</h1>
-            <div>
+        <h1 class="lightblue">Auctions</h1>
+        <div>
             {% if user.is_authenticated %}
-            Signed in as <strong>{{ user.username }}</strong>.
+            Signed in as <strong class="lightblue">{{ user.username }}</strong>.
             {% else %}
             Not signed in.
             {% endif %}

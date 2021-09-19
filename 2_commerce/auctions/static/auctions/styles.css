@@ -1,11 +1,18 @@
+html{
+    background-color: rgb(50, 50, 50);
+}
+
 body {
     min-height: 100vh;
     width: 80%;
     margin: 0 auto;
     max-width: 1200px;
-    border: 1px lightgray solid;
+    border: 1px black solid;
+    background-color: lightgray;
     border-bottom: none;
     border-top: none;
+    
+    font-family: lato;
 }
 
 body .page-title{
@@ -16,7 +23,7 @@ body .page-title{
 header{
     margin: 0;
     padding: 10px;
-    background-color: rgb(85, 85, 85);
+    background-color: rgb(50, 50, 50);
     color: white;
 }
 
@@ -28,14 +35,21 @@ header a:hover{
     color: lightblue;
 }
 
+.lightblue{
+    color: lightblue;
+}
+
 .listing_showcase{
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
 
-    border: 1px gray solid;
+    background-color: rgb(50, 50, 50);
+    
     border-radius: 20px;
     margin: 10px;
+
+    color: white;
 }
 
 .listing_showcase:hover{
@@ -57,6 +71,15 @@ header a:hover{
     overflow: hidden;
 }
 
+.listing_showcase .title a:link{
+    color: lightblue;
+}
+
+.listing_showcase .title a:hover{
+    color: white;
+    text-decoration: none;
+}
+
 .listing_showcase .title h3{
     text-overflow:ellipsis;
     white-space: nowrap;
@@ -72,11 +95,10 @@ header a:hover{
     padding: 10px;
     width: 40%;
     
-    border: 1px solid gray;
     border-bottom-left-radius: 20px;
     
-    background-color: blue;
-    color: white;
+    background-color: lightblue;;
+    color: rgb(50, 50, 50);
     
     text-align: center;
 }
@@ -98,12 +120,16 @@ header a:hover{
 }
 
 .listing_showcase img:hover{
-    box-shadow: 2px 2px 5px rgb(219, 219, 219)
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .listing_showcase .blank_img{
     width: 100%;
     max-width: 150px;
+}
+
+.listing_showcase .listing-item{
+    color: lightblue;
 }
 
 .categories{
@@ -112,29 +138,30 @@ header a:hover{
 }
 
 .categories li{
-    background: blue;
+    background-color: rgb(80, 80, 80);
     text-align: center;
     font-size: 20px;
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
+    border: 1px lightblue solid;
 }
 
 .categories li:hover{
-    background-color: rgb(0, 0, 192);
+    background-color: rgb(50, 50, 50);
     box-shadow: 2px 2px 4px grey;
 }
 
 .categories a:link{
-    color: white;
+    color: lightblue;
     text-decoration: none;
 }
 
-.img-price{
+.img-info{
     padding: 20px
 }
 
-.img-price img{
+.img-info img{
     display: block;
     height: 250px;
     width: auto;
@@ -145,7 +172,11 @@ header a:hover{
     border-radius: 5px;
 }
 
-.img-price .cur_bid{
+.img-info .info{
+    color: white;
+}
+
+.listing-page-body .cur_bid{
     text-align: center;
     display: inline-block;
     padding: 10px;
@@ -156,11 +187,11 @@ header a:hover{
     max-width: 100%;
     margin-bottom: 10px;
 }
-.img-price .cur_bid h3{
+.listing-page-body .cur_bid h3{
     margin: 0;
 }
 
-.img-price .cur_bid_title, .img-price .cur_bid_bidder{
+.listing-page-body .cur_bid_title{
     font-size: 1.5em;
     font-weight: 500;
     margin: 0;
@@ -174,4 +205,25 @@ header a:hover{
     padding: 10px;
     border: 1px lightgrey solid;
     border-radius: 10px;
+}
+
+.listing-page-body form{
+    overflow: hidden;
+}
+
+.listing-page-body .bid-form{
+    width: 50%;
+    margin: 10px;
+    margin-left: 0;
+    clear: none;
+    float: left;
+}
+
+.listing-page-body .bid-submit{
+    float: left;
+    margin: 10px;
+    height: 36px;
+    padding: 6px;
+    line-height: 20px;
+    vertical-align: middle;
 }
