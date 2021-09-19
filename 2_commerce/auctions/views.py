@@ -143,9 +143,11 @@ def toggle_watchlist(request, listing_id):
 
 def close_listing(request, listing_id):
     listing = Listing.objects.get(pk=listing_id)
-    listing.is_open=False
-    listing.save()
-    return HttpResponseRedirect(reverse("listing", args=[listing_id]))
+    if listing.creator == request.user:
+        listing.is_open=False
+        listing.save()
+        return HttpResponseRedirect(reverse("listing", args=[listing_id]))
+    return HttpResponseRedirect(reverse("index"))
 
 def watchlist(request):
     user = request.user
@@ -157,7 +159,7 @@ def watchlist(request):
     })
 
 def categories(request):
-    categories = Listing.objects.values_list('category', flat=True).distinct().order_by('category')
+    categories = Listing.objects.filter(is_open=True).values_list('category', flat=True).distinct().order_by('category')
     
     return render(request, "auctions/categories.html", {
         'categories': categories
