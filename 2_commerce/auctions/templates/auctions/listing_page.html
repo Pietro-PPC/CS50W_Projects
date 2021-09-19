@@ -1,16 +1,28 @@
 {% extends 'auctions/layout.html' %}
+{% load static %}
 
 {% block body %}
 <h2 class="page-title">Listing: {{ listing.title }}</h1>
+    <div class="listing-page-body">
     {% if not listing.is_open %}
-    <p>This listing is closed</p>
+    <h3 class="warning">Warning</h3>
+    <div class="messages">
+        <b><p class="warning-msg">This listing has already been closed!</p></b>
+        {% if not listing.is_open and current_bid.user == user %}
+            <b><p class="good-msg">Congratulations, you are the winner!</p></b>
+        {% endif %}
+    </div>
     {% endif %}
     
     <div class="row img-info">
-        <div class="col-6">
+        <div class="col-md-7 col-sm-12 img-col">
+            {% if listing.image_url  %}
             <img src={{listing.image_url}}>
+            {% else %}
+            <img src="{% static 'image/no_image.jpg' %}">
+            {% endif %}
         </div>
-        <div class="col-6 info-col">
+        <div class="col-md-5 col-sm-12 info-col">
             <div class="info">
                 {% if user == listing.creator and listing.is_open %}
                 <p><a href="{% url 'close' listing.id %}">[Close Listing]</a></p>
@@ -21,15 +33,13 @@
 
                 {% if listing in user.watchlist.all and user.is_authenticated and listing.is_open %}
                 <p><a href="{% url 'toggle_watchlist' listing.id %}">[Remove from watchlist]</a></p>
-                {% else %}
+                {% elif user.is_authenticated and listing.is_open %}
                 <p><a href="{% url 'toggle_watchlist' listing.id %}">[Add to watchlist]</a></p>
                 {% endif %}
             </div>
         </div>
     </div>
     
-    
-    <div class="listing-page-body">
         <p class="description"><b class="lightblue">Description:</b> {{ listing.description|safe }} </p>
         <div class="row bid">
             <div class="col-6 right" style="text-align: center">
@@ -55,16 +65,13 @@
             <form action="{% url 'listing' listing.id %}" method=POST>
                 {% csrf_token %}
                 {% if bid_error %}
-                <p>Your bid should be greater than the current bid!</p>
+                <p class="error-msg">Your bid should be greater than the current bid!</p>
                 {% endif %}
                 <input class="form-control bid-form" type="number" value="{{ min_bid }}" step="0.25" name="bid">
                 <input class="bid-submit dark-button" type="submit" value="Bid!">
             </form>
         {% endif %}
             
-        {% if not listing.is_open and current_bid.user == user %}
-        <p>Parabéns, você é o vencedor!</p>
-        {% endif %}
         
         <p class="cur_bid_title">Comments</h3>
         <div class="comment-section">

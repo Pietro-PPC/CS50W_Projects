@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
     width: 80%;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1100px;
     border-bottom: none;
     border-top: none;
     background-color: lightgray;
@@ -145,7 +145,7 @@ header a:hover{
     background-color: rgb(80, 80, 80);
     text-align: center;
     font-size: 20px;
-    padding: 5px;
+    padding: 5px 15px;
     border-radius: 5px;
     border: 1px lightblue solid;
     color: lightblue;
@@ -166,7 +166,7 @@ header a:hover{
 }
 
 .img-info{
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .img-info img{
@@ -181,12 +181,19 @@ header a:hover{
     border: 1px rgb(50, 50, 50) solid;
 }
 
+.img-info .img-col{
+    padding: 0;
+    margin: 5px 0;
+}
+
 .img-info .info-col{
     color: white;
     border-radius: 10px;
     background-color:rgb(50, 50, 50);
     padding: 10px;
+    margin: 5px 0;
 }
+
 
 .img-info .info-col a:link{
     color: lightblue;
@@ -231,7 +238,9 @@ header a:hover{
 }
 
 .listing-page-body .bid-form{
-    width: 50%;
+    width: 30%;
+    min-width: 200px;
+    max-width: 100%;
     margin: 10px;
     margin-left: 0;
     clear: none;
@@ -283,4 +292,33 @@ header a:hover{
 
 .left{
     text-align: left;
+}
+
+.warning{
+    text-align: center;
+}
+
+.messages{
+    /*border: 2px rgb(50, 50, 50) solid;*/
+    background-color: rgb(50,50,50);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.messages p{
+    text-align: center;
+    margin: 0px;
+}
+
+.error-msg{
+    color: red;
+    margin-bottom: 0;
+}
+
+.warning-msg{
+    color: rgb(228, 228, 128)
+}
+
+.good-msg{
+    color: rgb(94, 197, 94);
 }
