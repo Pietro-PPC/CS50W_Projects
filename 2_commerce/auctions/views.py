@@ -76,22 +76,27 @@ def new_listing(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
 
+    valueError = False
     if request.method == 'POST':
         form = page_forms.NewListingForm(request.POST)
         if form.is_valid():
-            l = Listing(
-                creator=request.user,
-                title=form.cleaned_data["title"],
-                description=form.cleaned_data["description"],
-                minimum_bid=form.cleaned_data["minimum_bid"],
-                category=form.cleaned_data["category"],
-                image_url=form.cleaned_data["url"]
-            )
-            l.save()
-            return HttpResponseRedirect(reverse("index"))
+            if float(form.cleaned_data["minimum_bid"]) <= 0.0:
+                valueError = True
+            else:
+                l = Listing(
+                    creator=request.user,
+                    title=form.cleaned_data["title"],
+                    description=form.cleaned_data["description"],
+                    minimum_bid=form.cleaned_data["minimum_bid"],
+                    category=form.cleaned_data["category"],
+                    image_url=form.cleaned_data["url"]
+                )
+                l.save()
+                return HttpResponseRedirect(reverse("index"))
 
     return render(request, "auctions/new_listing.html", {
-        "form": page_forms.NewListingForm()
+        "form": page_forms.NewListingForm(),
+        "error": valueError
     })
 
 def listing_page(request, id):

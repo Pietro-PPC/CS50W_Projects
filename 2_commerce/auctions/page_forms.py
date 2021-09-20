@@ -11,8 +11,8 @@ class NewListingForm(forms.Form):
             'placeholder': 'Item description '}
     ))
     minimum_bid = forms.FloatField(label=False, widget=forms.NumberInput(
-        attrs={'class': 'form-control new-listing', 'step':"0.25",
-            'placeholder': 'Starting Price'}
+        attrs={'class': 'form-control new-listing',
+            'placeholder': 'Starting Price (US$)'}
     ))
     category = forms.CharField(label=False, required=False, widget=forms.TextInput(
         attrs={'class': 'form-control new-listing',

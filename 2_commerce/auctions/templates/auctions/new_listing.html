@@ -6,6 +6,11 @@ Create New Listing
 
 {% block body %}
     <h2 class="page-title">Create new listing</h2>
+    {% if error %}
+    <div class="messages">
+        <p class="error-msg"><b>The starting price should be a positive value!</b></p>
+    </div>
+    {% endif %}
     <form action="{% url 'new_listing' %}" method="POST">
         {% csrf_token %}
         {{ form }}
