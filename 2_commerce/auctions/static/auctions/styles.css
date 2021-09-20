@@ -374,3 +374,11 @@ header a:hover{
 .good-msg{
     color: rgb(94, 197, 94);
 }
+
+.light-bg-link:link{
+    color: blue;
+}
+
+.light-bg-link:visited{
+    color: blue;
+}
