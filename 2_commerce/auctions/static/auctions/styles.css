@@ -13,6 +13,18 @@ body {
     font-family: lato;
 }
 
+section a:link{
+    color: white;
+}
+
+section a:hover{
+    color: lightblue;
+}
+
+section a:visited{
+    color: lightblue;
+}
+
 section{
     margin-top: 0;
     padding: 0 2% 30px 2%;
