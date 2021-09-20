@@ -24,3 +24,9 @@ def getListingsBids(listings):
         listings_bids.append(newElement)
         
     return listings_bids
+    
+def testValidBid(bid, current_bid, listing):
+    if current_bid is None:
+        return bid >= listing.minimum_bid    
+    else:
+        return bid > current_bid.value

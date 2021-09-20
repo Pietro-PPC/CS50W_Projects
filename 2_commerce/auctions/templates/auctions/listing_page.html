@@ -85,7 +85,7 @@ Listing: {{listing.title}}
             <form action="{% url 'listing' listing.id %}" method=POST>
                 {% csrf_token %}
                 {% if bid_error %}
-                <p class="error-msg">Your bid should be greater than the current bid!</p>
+                <p class="error-msg">Your bid should be greater than the current bid and greater/equal to the starting bid!</p>
                 {% endif %}
                 <input class="form-control bid-form" type="number" value="{{ min_bid|floatformat:2 }}" step="0.01" name="bid">
                 <input class="bid-submit dark-button" type="submit" value="Bid!">

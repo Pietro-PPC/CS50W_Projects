@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.db.models import Max
 
-from .util import getCurrentBid, getListingsBids
+from .util import getCurrentBid, getListingsBids, testValidBid
 
 from .models import User, Listing, Comment, Bid
 from . import page_forms
@@ -116,7 +116,7 @@ def listing_page(request, id):
         text = request.POST.get("text")
         if bid:
             bid = float(bid)
-            if (current_bid is None and bid >= listing.minimum_bid) or bid > current_bid.value:
+            if testValidBid(bid, current_bid, listing):
                 new_bid = Bid(
                     user = request.user,
                     listing = listing,
