@@ -188,7 +188,7 @@ def category(request, cat):
     """
     listings = Listing.objects.all().filter(category=cat)
     if (len(listings) == 0):
-        return HttpResponse("A categoria não existe!")
+        return HttpResponseRedirect(reverse('categories'))
 
     listings = listings.filter(is_open=True)
     return render(request, "auctions/category.html", {

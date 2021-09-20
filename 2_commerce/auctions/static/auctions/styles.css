@@ -31,6 +31,10 @@ header{
     color: white;
 }
 
+header a{
+    color: white;
+}
+
 header a:link{
     color: white;
 }
