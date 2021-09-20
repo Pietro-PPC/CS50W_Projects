@@ -363,6 +363,10 @@ header a:hover{
     margin-bottom: 0;
 }
 
+.error-msg-darkbg{
+    color: lightcoral;
+}
+
 .warning-msg{
     color: rgb(228, 228, 128)
 }

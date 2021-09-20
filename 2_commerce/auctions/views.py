@@ -77,10 +77,12 @@ def new_listing(request):
         return HttpResponseRedirect(reverse('login'))
 
     valueError = False
+    pageForm = page_forms.NewListingForm()
     if request.method == 'POST':
         form = page_forms.NewListingForm(request.POST)
+        pageForm = form
         if form.is_valid():
-            if float(form.cleaned_data["minimum_bid"]) <= 0.0:
+            if float(form.cleaned_data["minimum_bid"]) < 0.01:
                 valueError = True
             else:
                 l = Listing(
@@ -95,7 +97,7 @@ def new_listing(request):
                 return HttpResponseRedirect(reverse("index"))
 
     return render(request, "auctions/new_listing.html", {
-        "form": page_forms.NewListingForm(),
+        "form": pageForm,
         "error": valueError
     })
 
