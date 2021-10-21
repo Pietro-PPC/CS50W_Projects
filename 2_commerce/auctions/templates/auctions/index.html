@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2 class="page-title">Active Listings</h2>
+
+    {% if listings|length == 0 %}
+    <p class="empty_listings">
+        No active listings. 
+        {% if user.is_authenticated %}
+        <a href="{% url 'new_listing' %}">Create one now!</a>
+        {% else %}
+        <a href="{% url 'login' %}">Log in</a> and create one!
+        {% endif %}
+    </p>
+    {% else %}
+    <div class=row>
+        {% for l in listings %}
+            <div class="col-md-6 col-sm-12">
+                {% include "auctions/listing_obj.html" %}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% load static %}
+
+<div class="listing_showcase" >
+    
+    <div class="showcase_header">
+        <div class="title">
+            <h3><a href="{% url 'listing' l.listing.id %}">{{ l.listing.title }}</a></h3>
+        </div>
+        <div class="price">
+            {% if l.cur_bid %}
+            <h4>US$ {{ l.cur_bid|floatformat:2 }}</h4>
+            {% else %}
+            <h4>US$ --</h4>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="showcase_body">
+        <a href="{% url 'listing' l.listing.id %}">
+        <div class="img-container">
+            {% if l.listing.image_url  %}
+            <img src={{l.listing.image_url}}>
+            {% else %}
+            <img src="{% static 'image/no_image.jpg' %}">
+            {% endif %}
+        </div>
+        </a>
+        
+        <p><b class="listing-item">Initial Price:</b> US$ {{l.listing.minimum_bid|floatformat:2}}</p>
+        <p class="showcase-description"><b class="listing-item">Description:</b> {{ l.listing.description }}</p>
+    
+        {% if l.listing.category %}
+            <p><b class="listing-item">Category: </b> {{ l.listing.category }}</p>
+        {% else %}
+            <p><b class="listing-item">Category: </b> None </p>
+        {% endif %}
+    </div>
+</div>
